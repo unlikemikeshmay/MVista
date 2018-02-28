@@ -1,7 +1,7 @@
 <?php 
 $Host = '127.0.0.1';
 $UserName = 'root';
-$Password = 'root';
+$Password = '';
 
 $con = mysql_connect($Host,$UserName,$Password);
 if($con ===false){

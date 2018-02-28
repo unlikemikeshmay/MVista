@@ -1,25 +1,40 @@
 <?php 
-if(empty($_POST['FirstName'])|| empty($_POST['LastName'])|| empty($_POST['email'])|| empty($_POST['password']) ){
-    $ok = false;
+$var = 'hey';
+$vvar = 'yooooo';
+$text = sprintf('%s',$var);
+echo $text;
+if(!isset($_POST['FNAME'])||$_POST['FNAME']===''|| !isset($_POST['LNAME'])|| $_POST['LNAME'] === '' ||!isset($_POST['EMAIL'])||$_POST['EMAIL'] ==='' || !isset($_POST['PASSWORD'])|| $_POST['PASSWORD'] ==='' ){
+	$ok = false;
+	echo '<p>Please fill out all fields in order to register</p>';
 }
+
+
 else{
    $ok = true;
-   $Fname = $_POST['FirstName'];
-   $Lname = $_POST['LastName'];
-   $Email = $_POST['email'];
-   $Pass = $_POST['password'];
+   $Fname = $_POST['FNAME'];
+   $Lname = $_POST['LNAME'];
+   $Email = $_POST['EMAIL'];
+   $Pass = $_POST['PASSWORD'];
    $Hsh = password_hash($Pass, PASSWORD_DEFAULT);
 }
 if($ok){
-    $db = mysqli_connect('localhost','root','', 'mvista');
-    $sql = sprintf("INSERT INTO accounts (first_name, last_name,email,`password`) VALUES (
+	$db = mysqli_connect('localhost','root','', 'mvista');
+	if($db){
+		echo '<p>database connection complete</p>';
+	}
+    $sql = sprintf("INSERT INTO `accounts` (first_name, last_name,email,hash) VALUES (
 		'%s','%s','%s','%s'
 	)",mysqli_real_escape_string($db,$Fname),
 	mysqli_real_escape_string($db,$Lname),
 	mysqli_real_escape_string($db,$Email),
 	mysqli_real_escape_string($db,$Hsh));
-mysqli_query($db,$sql);
+$query = mysqli_query($db,$sql);
+if(!$query){
+	echo("error description: ". mysqli_error($db));
+}
+
 mysqli_close($db);
+
 }
 ?>
 <DOCTYPE html>
@@ -48,19 +63,19 @@ mysqli_close($db);
 	<form method="post" action="register.php">
 	 <div class="form-group">
 		<label for="inputFirstName">First name</label>
-		<input type="text"class="form-control" id="FirstName" placeholder="Enter first name"name="FirstName">
+		<input type="text"class="form-control" id="FirstName" placeholder="Enter first name"name="FNAME">
 	</div>
 	 <div class="form-group">
 		<label for="inputEmail">Last name</label>
-		<input type="text"class="form-control" id="LastName" placeholder="Enter last name"name="LastName">
+		<input type="text"class="form-control" id="LastName" placeholder="Enter last name"name="LNAME">
 	</div>
 	<div class="form-group">
 		<label for="inputEmail">Email address</label>
-		<input type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="email">
+		<input type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="EMAIL">
 	</div>
 	<div class="form-group">
 		<label for="inputPassword">Password</label>
-		<input type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="password">
+		<input type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="PASSWORD">
 	</div>
 	<button type="submit"class="btn btn-primary">Submit</button>
 	<div class="form-check">
