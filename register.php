@@ -76,7 +76,7 @@ else{
 		echo '<p>database connection for registration insert complete</p>';
 	}
 	$UserExist = "SELECT * FROM accounts WHERE email ='$Email'"; 
-	$userQuery = mysqli_query($db,$UserExist);
+	
 	$userArray = array();	
 		if($result = mysqli_query($db,$UserExist))
 		{

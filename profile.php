@@ -18,7 +18,7 @@
         <?php 
         session_start();
        
-        $SEmail = $_SESSION['UsernameEmail'];
+        $SEmail = 	$_SESSION['EMAIL'];
         $SFirstName = $_SESSION['FirstName'];
         $SLastName = $_SESSION['LastName'];
         if(isset($SEmail))

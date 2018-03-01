@@ -10,12 +10,7 @@
 <link href="css/site.css"rel="stylesheet">
 </head>
 <body>
-<?php 
-if (isset($_POST['submit'])){
-	
-	printf('username %s<br>password: %s',$_POST['FirstName'],$_POST['password']);
-}
-?>
+
 <div class="divbar divbar-inverse bg-inverse">
 	<ul>
 	<li class="listClass"><a href="index.php" class="derpy-div">Home</a></li>
@@ -32,17 +27,81 @@ if (isset($_POST['submit'])){
 	 
 	<div class="form-group">
 		<label for="inputEmail">Email address</label>
-		<input type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="email">
+		<input type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="EMAIL"></br>
+		
 	</div>
 	<div class="form-group">
 		<label for="inputPassword">Password</label>
-		<input type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="password">
+		<input type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="PASSWORD">
 	</div>
 	<button type="submit"class="btn btn-primary">Submit</button>
 	<div class="form-check">
 	<input type="checkbox"class="form-check-input" id="check1">
 		<label class="form-check-label" for="inputEmail">Remember me</label>
 	   
+	</div>
+	<div class="container">
+	<span style="color:red">
+	<?php 
+
+	if(isset($_POST['EMAIL'])&& $_POST['EMAIL']!=''&&isset($_POST['PASSWORD'])&& $_POST['PASSWORD']!='')
+	{
+		$ok = true;
+		$Email = $_POST['EMAIL'];
+		$Password = $_POST['PASSWORD'];
+		/* echo '<p>post set</p>'; */
+	}
+	else
+	{
+		$ok = false;
+		/* echo '<p>post not set</p>'; */
+	}
+	if($ok)
+	{
+		$con = mysqli_connect('localhost','root','', 'mvista');
+		if($con)
+		{
+			echo '<p>database connection for login complete</p>';
+		}
+		$UserExist = "SELECT * FROM accounts WHERE email ='$Email'"; 
+		$ProfA = array();
+		if($ProfileQ = mysqli_query($con,$UserExist)){
+			foreach($ProfileQ as $row)
+			{
+				array_push($ProfA,$row);
+				
+				$PassChecker = array_column($ProfA,'hash');
+				$FirstNameChecker = array_column($ProfA,'first_name');
+				$LastNameChecker = array_column($ProfA,'last_name');
+				/* var_dump($PassChecker); */
+			}
+			if(password_verify($Password,$PassChecker[0])){
+				if(isset($_SESSION['EMAIL'])&&$_SESSION['EMAIL']!=''&&isset($_SESSION['FirstName'])&&$_SESSION['FirstName']!=''&&isset($_SESSION['LastName'])&&$_SESSION['LastName']!=''){
+					unset($_SESSION['EMAIL']);
+					unset($_SESSION['FirstName']); 
+					unset($_SESSION['LastName']);
+				}
+				session_start();
+				$_SESSION['EMAIL'] = $Email;
+				$_SESSION['FirstName'] = $FirstNameChecker[0];
+				$_SESSION['LastName'] = $LastNameChecker[0];
+				$SE = $_SESSION['EMAIL'];
+				$SFN = $_SESSION['FirstName'];
+				$SLN = $_SESSION['LastName'];
+				echo '<p>passwords match for: '. $SFN . ' ' . $SLN . ' with the email (username) of: ' . $SE .' .</p>';
+				mysqli_close($con);
+					header("location:profile.php");
+					
+			}
+			else
+			{
+				echo "<p>Sorry that username and/or password doesn't match our records. Please try again.</p>";
+			}
+		}
+	}
+	
+?>
+	</span>
 	</div>
 </div>
 	</form>
