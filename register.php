@@ -56,25 +56,18 @@
 	</div>
 	<div class='container'><span style="color:red">
 	<?php 
-
 if(isset($_POST['FNAME'])&&$_POST['FNAME']!=''&& isset($_POST['LNAME'])&& $_POST['LNAME'] != '' && isset($_POST['EMAIL'])&& $_POST['EMAIL'] !='' && isset($_POST['PASSWORD'])&& $_POST['PASSWORD'] !='' ){
 	$ok = true;
 	$Fname = $_POST['FNAME'];
    $Lname = $_POST['LNAME'];
    $Email = $_POST['EMAIL'];
    $Pass = $_POST['PASSWORD'];
-   $Hsh = password_hash($Pass, PASSWORD_DEFAULT);
-  
+   $Hsh = password_hash($Pass, PASSWORD_DEFAULT);  
 }
-
-
 else{
    $ok = false;
    echo '<p>Please fill out every field to register</p>';
-
-
 }
-
  if($ok)
  {
 	$db = mysqli_connect('localhost','root','', 'mvista');
@@ -82,24 +75,17 @@ else{
 	{
 		echo '<p>database connection for registration insert complete</p>';
 	}
-   
-
-	
 	$UserExist = "SELECT * FROM accounts WHERE email ='$Email'"; 
 	$userQuery = mysqli_query($db,$UserExist);
-	$userArray = array();
-	
+	$userArray = array();	
 		if($result = mysqli_query($db,$UserExist))
 		{
 			foreach($result as $row){
 				array_push($userArray,$row);
 				$emailchecker = array_column($userArray,'email');
-				/* var_dump($emailchecker); */
 			}
 			if($Email===$emailchecker[0]){
-				
 					echo 'Sorry! An account with the email address: '. $Email . ' already exists';
-
 			}
 			else
 			{
@@ -109,34 +95,26 @@ else{
 				mysqli_real_escape_string($db,$Lname),
 				mysqli_real_escape_string($db,$Email),
 				mysqli_real_escape_string($db,$Hsh));
-
-				
 				$query = mysqli_query($db,$sql);
-				
 				if(!$query){
 					echo("error description: ". mysqli_error($db));
+					mysqli_close($db);
 				}
 				else{
-					echo 'insert statement successful';
-				}
-				
-				
-			}
-			
+					echo 'insert statement successful: setting session variables';
+					session_start();
+					$_SESSION['UsernameEmail'] = $_POST['EMAIL'];
+					$_SESSION['FirstName'] = $_POST['FNAME'];
+					$_SESSION['LastName'] = $_POST['LNAME'];
+					mysqli_close($db);
+					header("location:profile.php");
+					exit;
+				}	
+			}		
 			mysqli_free_result($result);
 		}
-	
-			
-		
-		
-	
-
-
-
 mysqli_close($db);
-
 }
-
 ?>
 	</span></div>
 </div>
