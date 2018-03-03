@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css"rel="stylesheet">
-<script src="js/bootstrap.min.js"type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
 <link href="css/site.css"rel="stylesheet">
 </head>
 <body>
-<div class="divbar divbar-inverse bg-inverse">
+<div class="customNav">
     <ul>
     <li class="listClass"><a href="index.php" class="derpy-div">Home</a></li>
         <li class="listClass"><a href="Contact.php" class="derpy-div">Contact</a></li>
@@ -20,17 +20,7 @@
     </ul>
 </div>
 <h3 class="jumbotron">Mike Vista under construction</h3>
-
-<div class="jumbotron">
-	<div class="container">
-		<ul>
-
-		</ul>
-	</div>
-</div>
-
-<div class="jumbotron">
-
+<nav class="navbar navbar-inverse bg-inverse">
 	<form method="post" action="register.php">
 	 <div class="form-group">
 		<label for="inputFirstName">First name</label>
@@ -63,6 +53,7 @@ if(isset($_POST['FNAME'])&&$_POST['FNAME']!=''&& isset($_POST['LNAME'])&& $_POST
    $Email = $_POST['EMAIL'];
    $Pass = $_POST['PASSWORD'];
    $Hsh = password_hash($Pass, PASSWORD_DEFAULT);  
+   echo 'post data is set';
 }
 else{
    $ok = false;
@@ -70,7 +61,8 @@ else{
 }
  if($ok)
  {
-	$db = mysqli_connect('localhost','root','', 'mvista');
+	$db = mysqli_connect('127.0.0.1','root','root', 'mvista');
+
 	if($db)
 	{
 		echo '<p>database connection for registration insert complete</p>';
@@ -83,6 +75,7 @@ else{
 			foreach($result as $row){
 				array_push($userArray,$row);
 				$emailchecker = array_column($userArray,'email');
+				var_dump($emailchecker);
 			}
 			if($Email===$emailchecker[0]){
 					echo 'Sorry! An account with the email address: '. $Email . ' already exists';
@@ -103,10 +96,10 @@ else{
 				else{
 					echo 'insert statement successful: setting session variables';
 					session_start();
-					$_SESSION['UsernameEmail'] = $_POST['EMAIL'];
+					$_SESSION['EMAIL'] = $_POST['EMAIL'];
 					$_SESSION['FirstName'] = $_POST['FNAME'];
 					$_SESSION['LastName'] = $_POST['LNAME'];
-					mysqli_close($db);
+					
 					header("location:profile.php");
 					exit;
 				}	

@@ -49,20 +49,21 @@
 		$ok = true;
 		$Email = $_POST['EMAIL'];
 		$Password = $_POST['PASSWORD'];
-		/* echo '<p>post set</p>'; */
+		echo '<p>post set</p>';
 	}
 	else
 	{
 		$ok = false;
-		/* echo '<p>post not set</p>'; */
+		echo '<p>post not set</p>';
 	}
 	if($ok)
 	{
-		$con = mysqli_connect('localhost','root','', 'mvista');
+		$con = mysqli_connect('127.0.0.1','root','root', 'mvista');
 		if($con)
 		{
 			echo '<p>database connection for login complete</p>';
 		}
+		
 		$UserExist = "SELECT * FROM accounts WHERE email ='$Email'"; 
 		$ProfA = array();
 		if($ProfileQ = mysqli_query($con,$UserExist)){
@@ -76,11 +77,11 @@
 				/* var_dump($PassChecker); */
 			}
 			if(password_verify($Password,$PassChecker[0])){
-				if(isset($_SESSION['EMAIL'])&&$_SESSION['EMAIL']!=''&&isset($_SESSION['FirstName'])&&$_SESSION['FirstName']!=''&&isset($_SESSION['LastName'])&&$_SESSION['LastName']!=''){
+				/* if(isset($_SESSION['EMAIL'])&&$_SESSION['EMAIL']!=''&&isset($_SESSION['FirstName'])&&$_SESSION['FirstName']!=''&&isset($_SESSION['LastName'])&&$_SESSION['LastName']!=''){
 					unset($_SESSION['EMAIL']);
 					unset($_SESSION['FirstName']); 
 					unset($_SESSION['LastName']);
-				}
+				} */
 				session_start();
 				$_SESSION['EMAIL'] = $Email;
 				$_SESSION['FirstName'] = $FirstNameChecker[0];
@@ -89,14 +90,15 @@
 				$SFN = $_SESSION['FirstName'];
 				$SLN = $_SESSION['LastName'];
 				echo '<p>passwords match for: '. $SFN . ' ' . $SLN . ' with the email (username) of: ' . $SE .' .</p>';
-				mysqli_close($con);
+				
 					header("location:profile.php");
 					
 			}
 			else
 			{
 				echo "<p>Sorry that username and/or password doesn't match our records. Please try again.</p>";
-			}
+            }
+            mysqli_close($con);
 		}
 	}
 	

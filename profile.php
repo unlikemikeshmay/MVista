@@ -9,7 +9,7 @@
 <link href="css/site.css"rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-inverse bg-inverse ">
+<div class="customNav">
     <ul>
  
     <li class="listClass"><a href="index.php" class="derpy-nav">Home</a></li>
@@ -36,8 +36,10 @@
             ?>
         
     </ul>
-</nav>
-<h3 class="jumbotron">Welcome to your profile <?php echo($SFirstName . ' ' . $SLastName)?></h3>
+</div>
+<div class="jumbotron">
+<h3 >Welcome to your profile <?php echo($SFirstName . ' ' . $SLastName)?></h3>
+</div>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/global.js" type="text/javascript"></script>
