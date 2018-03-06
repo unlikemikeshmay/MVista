@@ -36,7 +36,7 @@
     </ul>
     </nav>
 <div class="jumbotron">
-<h3 >Welcome to your profile <?php echo($SFirstName . ' ' . $SLastName)?></h3>
+<h3 >Welcome to your profile <?php echo($_SESSION['FirstName'] . ' ' . $_SESSION['LastName'])?></h3>
 </div>
 <div class="container">
     <div class="row">

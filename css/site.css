@@ -20,7 +20,14 @@ ul li{
 }
 .nervbar{
     background-image: url("../public/navpattern.png");
+    border-bottom: .4em solid;
+    border-bottom-color: white;
+
 }
 body{
     background-image: url("../public/mvistaback.png");
+}
+.contactJ {
+    background-color: white;
+    margin-top: 1em;
 }
