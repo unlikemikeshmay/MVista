@@ -11,15 +11,32 @@
 </head>
 <body>
 
-<div class="divbar divbar-inverse bg-inverse">
-	<ul>
-	<li class="listClass"><a href="index.php" class="derpy-div">Home</a></li>
-		<li class="listClass"><a href="Contact.php" class="derpy-div">Contact</a></li>
-		<li class="listClass"><a href="Examples.php" class="derpy-div">Examples</a></li>
-		<li class="loginClass"><a href="login.php" class="derpy-div">LogIn</a></li>
-		<li class="loginClass"><a href="register.php" class="derpy-div">Register</a></li>
-	</ul>
-</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
+    
+    <ul class="navbar-nav">
+    <li class="nav-item"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
+        <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
+        <?php 
+        session_start();
+       
+       
+        
+        if(isset($_SESSION['EMAIL']))
+        {
+            echo '
+            <li class="nav-item"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+			<li class="navbar-brand">'. $_SESSION['EMAIL'] . ' is logged in. ';
+        }
+        else{
+            echo '
+            <li class="nav-item loginClass"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass"><a href="register.php" class="nav-link">Register</a></li>';
+        }
+            ?>
+    </ul>
+    </nav>
 <h3 class="jumbotron">Mike Vista under construction</h3></br>
 <div class="jumbotron">
 

@@ -9,36 +9,40 @@
 <link href="css/site.css"rel="stylesheet">
 </head>
 <body>
-<div class="customNav">
-    <ul>
- 
-    <li class="listClass"><a href="index.php" class="derpy-nav">Home</a></li>
-        <li class="listClass"><a href="Contact.php" class="derpy-nav">Contact</a></li>
-        <li class="listClass"><a href="Examples.php" class="derpy-nav">Examples</a></li>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
+    
+    <ul class="navbar-nav">
+    <li class="nav-item"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
+        <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
         <?php 
         session_start();
        
-        $SEmail = 	$_SESSION['EMAIL'];
-        $SFirstName = $_SESSION['FirstName'];
-        $SLastName = $_SESSION['LastName'];
-        if(isset($SEmail))
+       
+        
+        if(isset($_SESSION['EMAIL']))
         {
             echo '
-            <li class="loginClass">'. $SEmail . ' is logged in. 
-            <li class="loginClass"><a href="logout.php" class="derpy-div">LogOut</a></li>
-            <li class="loginClass"><a href="profile.php" class="derpy-div">Profile</a></li>';
+            <li class="nav-item"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+			<li class="navbar-brand">'. $_SESSION['EMAIL'] . ' is logged in. ';
         }
         else{
             echo '
-            <li class="loginClass"><a href="login.php" class="derpy-div">LogIn</a></li>
-            <li class="loginClass"><a href="register.php" class="derpy-div">Register</a></li>';
+            <li class="nav-item loginClass"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass"><a href="register.php" class="nav-link">Register</a></li>';
         }
             ?>
-        
     </ul>
-</div>
+    </nav>
 <div class="jumbotron">
 <h3 >Welcome to your profile <?php echo($SFirstName . ' ' . $SLastName)?></h3>
+</div>
+<div class="container">
+    <div class="row">
+        <div></div>
+    </div>
+
 </div>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>

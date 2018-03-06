@@ -6,14 +6,21 @@ ul li{
     list-style-type: none;
     display: inline;
 }
-.derpy-nav{
-  
-}
+
 .listClass{
     margin:1em ;
-    float: left;
+   
+    color:white;
+    display: inline;
 }
 .loginClass{
-    margin:1em ;
+   
     float: right;
+    margin-left:3em;
+}
+.nervbar{
+    background-image: url("../public/navpattern.png");
+}
+body{
+    background-image: url("../public/mvistaback.png");
 }

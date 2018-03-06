@@ -9,11 +9,12 @@
 <link href="css/site.css"rel="stylesheet">
 </head>
 <body>
-<div class="divbar divbar-inverse bg-inverse">
-    <ul>
-    <li class="listClass"><a href="index.php" class="derpy-div">Home</a></li>
-        <li class="listClass"><a href="Contact.php" class="derpy-div">Contact</a></li>
-        <li class="listClass"><a href="Examples.php" class="derpy-div">Examples</a></li>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
+    
+    <ul class="navbar-nav">
+    <li class="nav-item"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
+        <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
         <?php 
         session_start();
        
@@ -22,22 +23,55 @@
         if(isset($_SESSION['EMAIL']))
         {
             echo '
-            <li class="loginClass">'. $_SESSION['EMAIL'] . ' is logged in. 
-            <li class="loginClass"><a href="logout.php" class="derpy-div">LogOut</a></li>
-            <li class="loginClass"><a href="profile.php" class="derpy-div">Profile</a></li>';
+            <li class="nav-item"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+			<li class="navbar-brand">'. $_SESSION['EMAIL'] . ' is logged in. ';
         }
         else{
             echo '
-            <li class="loginClass"><a href="login.php" class="derpy-div">LogIn</a></li>
-            <li class="loginClass"><a href="register.php" class="derpy-div">Register</a></li>';
+            <li class="nav-item loginClass"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass"><a href="register.php" class="nav-link">Register</a></li>';
         }
             ?>
     </ul>
+    </nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form method="post" action="">
+                <div class="page-header">
+                    <h3>Send me an email!</h3>
+                </div>
+                <div class="jumbotron">
+                    <div class="form-group">
+                        <label for="">From:</label>
+                        <input type="text"class="form-control col-xs-4"id="from"placeholder="Who is sending the message?"name="FROM">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Subject:</label>
+                        <input type="text"class="form-control col-xs-4"id="subject"placeholder="What would you like the subject to be?"name="SUBJECT">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Message:</label>
+                        <textarea rows="10" cols="30"class="form-control col-xs-4"id="message"placeholder="What is on your mind?"name="MESSAGE">
+                        </textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-<h3 class="jumbotron">Mike Vista under construction</h3>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/global.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+   
+    })
+})
+</script>
 </body>
 </html>
 
