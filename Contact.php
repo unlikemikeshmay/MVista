@@ -47,7 +47,7 @@
                     <div class="p-3 mb-2 bg-light text-dark card card-block">    
                          <h5>Reach out! Send me an email!</h5><br>
                     </div>    
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="">From:</label>
                         <input type="text"class="form-control col-xs-4"id="from"placeholder="Who is sending the message?"name="FROM">
                     </div>
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->isHTML(TRUE);
             $mail->Subject = $_POST['SUBJECT'];
             $mail->addCC(isset($_POST['SENDEREMAIL'])?$_POST['SENDEREMAIL']:'');
-            $mail->Body = 'You have been contacted by '. $_POST['FROM'] . (isset($_POST['SENDEREMAIL'])?( ' @ return email '.$_POST['SENDEREMAIL']): ' with no return email')  . '<br><br> '. $_POST['MESSAGE'] . ' ' ;
+            $mail->Body = 'You have been contacted by '. $_POST['FROM'] . (isset($_POST['SENDEREMAIL'])?( ' with return email: '.$_POST['SENDEREMAIL']): ' with no return email')  . '<br><br> '. $_POST['MESSAGE'] . ' ' ;
             if($mail->send()){
                 $flag=true;
                 echo '<p>Message has been sent. </p>';

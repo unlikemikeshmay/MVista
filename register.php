@@ -36,32 +36,39 @@
             ?>
     </ul>
     </nav>
-<h3 class="jumbotron">Mike Vista under construction</h3>
-<nav class="navbar navbar-inverse bg-inverse">
-	<form method="post" action="register.php">
-	 <div class="form-group">
-		<label for="inputFirstName">First name</label>
-		<input  type="text"class="form-control" id="FirstName" placeholder="Enter first name"name="FNAME">
-	</div>
-	 <div class="form-group">
-		<label for="inputEmail">Last name</label>
-		<input  type="text"class="form-control" id="LastName" placeholder="Enter last name"name="LNAME">
-	</div>
-	<div class="form-group">
-		<label for="inputEmail">Email address</label>
-		<input  type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="EMAIL">
-	</div>
-	<div class="form-group">
-		<label for="inputPassword">Password</label>
-		<input  type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="PASSWORD">
-	</div>
-	<button type="submit"class="btn btn-primary">Submit</button>
-	<div class="form-check">
-	<input  type="checkbox"class="form-check-input" id="check1">
-		<label class="form-check-label" for="inputEmail">Remember me</label>
-	   
-	</div>
-	<div class='container'><span style="color:red">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+				<form method="post" action="register.php">
+					<div class="jumbotron contactJ">
+					<div class="p-3 mb-2 bg-light text-dark card card-block">    
+							<h5>Register a new account.</h5><br>
+						</div>
+						<div class="form-group">
+							<label for="inputFirstName">First name</label>
+							<input  type="text"class="form-control" id="FirstName" placeholder="Enter first name"name="FNAME">
+						</div>
+						<div class="form-group">
+							<label for="inputEmail">Last name</label>
+							<input  type="text"class="form-control" id="LastName" placeholder="Enter last name"name="LNAME">
+						</div>
+						<div class="form-group">
+							<label for="inputEmail">Email address</label>
+							<input  type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="EMAIL">
+						</div>
+						<div class="form-group">
+							<label for="inputPassword">Password</label>
+							<input  type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="PASSWORD">
+						</div>
+						<button type="submit"class="btn btn-outline-dark my-2 my-sm-0">Submit</button>
+					<!-- 	<div class="form-check">
+						<input  type="checkbox"class="form-check-input" id="check1">
+							<label class="form-check-label" for="inputEmail">Remember me</label>
+						
+						</div> -->
+						</div>
+				<div class='container'><span style="color:red">
 	<?php 
 if(isset($_POST['FNAME'])&&$_POST['FNAME']!=''&& isset($_POST['LNAME'])&& $_POST['LNAME'] != '' && isset($_POST['EMAIL'])&& $_POST['EMAIL'] !='' && isset($_POST['PASSWORD'])&& $_POST['PASSWORD'] !='' ){
 	$ok = true;
@@ -117,7 +124,7 @@ else{
 					$_SESSION['FirstName'] = $_POST['FNAME'];
 					$_SESSION['LastName'] = $_POST['LNAME'];
 					
-					header("location:profile.php");
+					/* header("location:profile.php"); */
 					exit;
 				}	
 			}		
@@ -127,6 +134,9 @@ mysqli_close($db);
 }
 ?>
 	</span></div>
+	</form>
+	</div>
+	</div>
 </div>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
