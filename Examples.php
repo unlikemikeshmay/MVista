@@ -16,7 +16,7 @@
         <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
         <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
         <?php 
-        session_start();
+        /* session_start(); */
        
        
         
