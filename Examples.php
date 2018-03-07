@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
 <head>
-<title>MVista - Register</title>
+<title>MVista - Examples</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css"rel="stylesheet">
@@ -15,7 +15,7 @@
     <ul class="navbar-nav">
     <li class="nav-item loginClass"><a href="index.php"class="nav-link">Home</a></li>
         <li class="nav-item loginClass"><a href="Contact.php" class="nav-link" >Contact</a></li>
-        <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li>
+        <!-- <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li> -->
         <?php 
         session_start();
        
