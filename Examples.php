@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
 <head>
-<title>Mike Vista - Register</title>
+<title>MVista - Register</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css"rel="stylesheet">
@@ -16,7 +16,7 @@
         <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
         <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
         <?php 
-        /* session_start(); */
+        session_start();
        
        
         
@@ -35,10 +35,11 @@
             ?>
     </ul>
     </nav>
-<h3 class="jumbotron">Mike Vista under construction</h3>
+
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/global.js" type="text/javascript"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 </body>
 </html>
 

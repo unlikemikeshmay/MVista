@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
 <head>
-<title>Mike Vista - Profile</title>
+<title>MVista - Profile</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css"rel="stylesheet">
@@ -47,6 +47,7 @@
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/global.js" type="text/javascript"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 </body>
 </html>
         

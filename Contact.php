@@ -2,7 +2,7 @@
 <DOCTYPE html>
 <html>
 <head>
-<title>Mike Vista - Contact</title>
+<title>MVista - Contact</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css"rel="stylesheet">
@@ -40,8 +40,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <form method="post" action="contact.php">
+        <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+            <form id="contactForm" method="post" action="contact.php">
                 
                 <div class="jumbotron contactJ">
                     <div class="p-3 mb-2 bg-light text-dark card card-block">    
@@ -132,12 +132,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
-<script src="js/global.js" type="text/javascript"></script>
-<script>
-
-</script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/validate.js" type="text/javascript"></script>
 </body>
 </html>
 
 <!-- Id guid?  FirstName varchar(15) 
     Last name varchar(12) 
+   name="FROM">
+     "name="SUBJECT">
+    name="SENDEREMAIL">
+     name="MESSAGE"></textarea>
+ 
