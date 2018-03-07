@@ -66,13 +66,7 @@
 							<input  type="password"class="form-control" id="confPassword" placeholder="Enter password"name="ConfPASSWORD">
 						</div>
 						<button type="submit"class="btn btn-outline-dark my-2 my-sm-0">Submit</button>
-					<!-- 	<div class="form-check">
-						<input  type="checkbox"class="form-check-input" id="check1">
-							<label class="form-check-label" for="inputEmail">Remember me</label>
-						
-						</div> -->
-						</div>
-				<div class='container'><span style="color:red">
+						<div class='container'><br><span style="color:red">
 	<?php 
 if(isset($_POST['FNAME'])&&$_POST['FNAME']!=''&& isset($_POST['LNAME'])&& $_POST['LNAME'] != '' && isset($_POST['EMAIL'])&& $_POST['EMAIL'] !='' && isset($_POST['PASSWORD'])&& $_POST['PASSWORD'] !='' ){
 	$ok = true;
@@ -81,33 +75,49 @@ if(isset($_POST['FNAME'])&&$_POST['FNAME']!=''&& isset($_POST['LNAME'])&& $_POST
    $Email = $_POST['EMAIL'];
    $Pass = $_POST['PASSWORD'];
    $Hsh = password_hash($Pass, PASSWORD_DEFAULT);  
-   echo 'post data is set';
+   /* echo 'post data is set'; */
 }
 else{
    $ok = false;
-   echo '<p>Please fill out every field to register</p>';
+  /*  echo '<p>Please fill out every field to register</p>'; */
 }
  if($ok)
  {
 	$db = mysqli_connect('127.0.0.1','root','root', 'mvista');
 
-	if($db)
+	/* if($db)
 	{
 		echo '<p>database connection for registration insert complete</p>';
-	}
+	} */
 	$UserExist = "SELECT * FROM accounts WHERE email ='$Email'"; 
 	
 	$userArray = array();	
 	$emailchecker = array();
+	$Eplace;
 		if($result = mysqli_query($db,$UserExist))
 		{
 			foreach($result as $row){
 				array_push($userArray,$row);
 				$emailchecker = array_column($userArray,'email');
+				
 				/* var_dump($emailchecker); */
 			}
-			if($Email===$emailchecker[0]){
-					echo 'Sorry! An account with the email address: '. $Email . ' already exists';
+			if(isset($emailchecker[0])){
+				$Eplace = $emailchecker[0];
+				
+			}
+			else{$emailchecker = array('no email was found like that');$Eplace='no email like that exists in the db'; }
+			if($Email===$Eplace)
+			{
+				if(isset($_SESSION['EMAIL'])){
+					echo '<span style="color:green"><p>You are already logged in with: ' . $_SESSION['EMAIL'] . '. </p></span>';
+				}
+				else{
+					if(!isset($_SESSION['EMAIL'])){
+						echo 'Sorry! An account with the email address: '. $Email . ' already exists';
+					}
+				}
+				
 			}
 			else
 			{
@@ -123,14 +133,18 @@ else{
 					mysqli_close($db);
 				}
 				else{
-					echo 'insert statement successful: setting session variables';
-					session_start();
+					/* echo 'insert statement successful: setting session variables'; */
+					if(!isset($_SESSION)){
+						session_start();
+					}
+					
 					$_SESSION['EMAIL'] = $_POST['EMAIL'];
 					$_SESSION['FirstName'] = $_POST['FNAME'];
 					$_SESSION['LastName'] = $_POST['LNAME'];
 					
-					/* header("location:profile.php"); */
-					exit;
+
+					header("location:profile.php");
+					
 				}	
 			}		
 			mysqli_free_result($result);
@@ -139,6 +153,8 @@ mysqli_close($db);
 }
 ?>
 	</span></div>
+						</div>
+				
 	</form>
 	</div>
 	</div>

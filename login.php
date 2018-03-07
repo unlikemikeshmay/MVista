@@ -14,9 +14,9 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
     
     <ul class="navbar-nav">
-    <li class="nav-item"><a href="index.php"class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
-        <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
+    <li class="nav-item loginClass"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item loginClass"><a href="Contact.php" class="nav-link" >Contact</a></li>
+        <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li>
         <?php 
         session_start();
        
@@ -25,9 +25,9 @@
         if(isset($_SESSION['EMAIL']))
         {
             echo '
-            <li class="nav-item"><a href="logout.php" class="nav-link">LogOut</a></li>
-			<li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
-			<li class="navbar-brand">'. $_SESSION['EMAIL'] . ' is logged in. ';
+            <li class="nav-item loginClass"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item loginClass"><a href="profile.php" class="nav-link">Profile</a></li>
+			<li class="navbar-brand loginClass">'. $_SESSION['EMAIL'] . ' is logged in. ';
         }
         else{
             echo '
@@ -77,7 +77,7 @@
 	else
 	{
 		$ok = false;
-		echo '<p>post not set</p>';
+		/* echo '<p>post not set</p>'; */
 	}
 	if($ok)
 	{
@@ -105,7 +105,9 @@
 					unset($_SESSION['FirstName']); 
 					unset($_SESSION['LastName']);
 				} */
-				session_start();
+				if(!isset($_SESSION)){
+					session_start();
+				}
 				$_SESSION['EMAIL'] = $Email;
 				$_SESSION['FirstName'] = $FirstNameChecker[0];
 				$_SESSION['LastName'] = $LastNameChecker[0];

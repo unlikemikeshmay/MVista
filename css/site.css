@@ -20,12 +20,19 @@ ul li{
 }
 .nervbar{
     background-image: url("../public/navpattern.png");
-    border-bottom: .4em solid;
+    border-bottom: .2em solid;
     border-bottom-color: white;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
 
 }
 body{
     background-image: url("../public/mvistaback.png");
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    font-family: 'Josefin Sans', sans-serif;
 }
 .contactJ {
     background-color: rgb(235, 235, 235);
