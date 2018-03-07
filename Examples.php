@@ -7,6 +7,7 @@
 <link href="css/bootstrap.min.css"rel="stylesheet">
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <link href="css/site.css"rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
