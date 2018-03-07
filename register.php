@@ -13,9 +13,9 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
     
     <ul class="navbar-nav">
-    <li class="nav-item"><a href="index.php"class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="Contact.php" class="nav-link" >Contact</a></li>
-        <li class="nav-item"><a href="Examples.php" class="nav-link" >Examples</a></li>
+    <li class="nav-item loginClass"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item loginClass"><a href="Contact.php" class="nav-link" >Contact</a></li>
+        <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li>
         <?php 
         session_start();
        
@@ -24,9 +24,9 @@
         if(isset($_SESSION['EMAIL']))
         {
             echo '
-            <li class="nav-item"><a href="logout.php" class="nav-link">LogOut</a></li>
-			<li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
-			<li class="navbar-brand">'. $_SESSION['EMAIL'] . ' is logged in. ';
+            <li class="nav-item loginClass"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item loginClass"><a href="profile.php" class="nav-link">Profile</a></li>
+			<li class="navbar-brand loginClass">'. $_SESSION['EMAIL'] . ' is logged in. ';
         }
         else{
             echo '
@@ -40,7 +40,7 @@
 <div class="container">
     <div class="row">
 	<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-				<form method="post" action="register.php">
+				<form id="registerForm" method="post" action="register.php">
 					<div class="jumbotron contactJ">
 					<div class="p-3 mb-2 bg-light text-dark card card-block">    
 							<h5>Register a new account.</h5><br>
@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputPassword">Confirm Password</label>
-							<input  type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="ConfPASSWORD">
+							<input  type="password"class="form-control" id="confPassword" placeholder="Enter password"name="ConfPASSWORD">
 						</div>
 						<button type="submit"class="btn btn-outline-dark my-2 my-sm-0">Submit</button>
 					<!-- 	<div class="form-check">
@@ -98,6 +98,7 @@ else{
 	$UserExist = "SELECT * FROM accounts WHERE email ='$Email'"; 
 	
 	$userArray = array();	
+	$emailchecker = array();
 		if($result = mysqli_query($db,$UserExist))
 		{
 			foreach($result as $row){

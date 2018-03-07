@@ -37,4 +37,80 @@ $(function(){
             }
         }
     })
+    $('#registerForm').validate({
+        rules:{
+            FNAME:{
+                required: true,
+                minlength:3
+            },
+            LNAME:{
+                required: true,
+                minlength:3
+            },
+            EMAIL:{
+                required:true,
+                email: true
+            },
+            PASSWORD:{
+                required: true,
+                minlength:6
+            
+            },
+            ConfPASSWORD:{
+                required: true,
+                minlength:6,
+                equalTo: "#inputPassword"
+            }
+        },
+        messages:{
+             FNAME:{
+                required: "<span style='color:red'>Please enter your first name.</span>",
+                minlength: "<span style='color:red'>First name field too short.</span>"
+            },
+            LNAME:{
+                required: "<span style='color:red'>Please enter your last name.</span>",
+                minlength: "<span style='color:red'>Last name field too short.</span>"
+            },
+            EMAIL:{
+                required: "<span style='color:red'>Please enter a valid email.</span>",
+                email: "<span style='color:red'>Please make sure your email is correct.</span>"
+            },
+            PASSWORD:{
+                required: "<span style='color:red'>Please enter a password.</span>",
+                minlength: "<span style='color:red'>Your password must be at least 6 characters long.</span>"
+            },
+            ConfPASSWORD:{
+                required: "<span style='color:red'>Please re-enter your password.</span>",
+                minlength: "<span style='color:red'>Your password must be at least 6 characters long.</span>",
+                equalTo: "<span style='color:red'>Please enter the same password as above.</span>"
+            }
+        }
+    })
+    $('#loginForm').validate({
+        rules:{
+            EMAIL:{
+                required:true,
+                email:true
+            },
+            PASSWORD:{
+                required:true,
+                minlength:6
+            }
+        },
+        messages:{
+            EMAIL:{
+                required:"<span style='color:red'>Please enter your email address.</span>",
+                email:"<span style='color:red'>Please enter a valid email address.</span>"
+            },
+            PASSWORD:{
+                required:"<span style='color:red'>Please enter your password.</span>",
+                minlength:"<span style='color:red'>Passwords are a minimum of 6 characters.</span>"
+            }
+        }
+    })
 })
+/* 	name="FNAME">
+	name="LNAME">
+	name="EMAIL">
+	name="PASSWORD">
+	name="ConfPASSWORD"> */

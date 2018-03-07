@@ -16,7 +16,7 @@ ul li{
 .loginClass{
    
     float: right;
-    margin-left:3em;
+    margin-left:2em;
 }
 .nervbar{
     background-image: url("../public/navpattern.png");
@@ -28,6 +28,7 @@ body{
     background-image: url("../public/mvistaback.png");
 }
 .contactJ {
-    background-color: white;
+    background-color: rgb(235, 235, 235);
     margin-top: 1em;
+    
 }
