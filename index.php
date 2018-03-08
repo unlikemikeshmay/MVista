@@ -9,6 +9,9 @@
 <link href="css/site.css"rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 
 </head>
 <body>
@@ -43,7 +46,12 @@
               <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText" ><h1><b>Hi, I'm Mike. I am an application developer.</b></h1></div>
           </div>
       </div>
-
+      <div class="container-fluid"align="center">
+          <div class="row">
+              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText" ><i style="font-size:4em" class="fas fa-angle-down"></i></div>
+          </div>
+      </div>
+      
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -51,29 +59,18 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText"align="center"><h1>Are you looking for a full stack application developer</h1><br>
-              <h1>to build your application or website from design to deployment?</h1>
-
-            </div>
-          </div>
-      </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active c">
+      <img class="d-block w-100" src="./public/planning.jpeg" alt="First slide">
     </div>
-    <div class="carousel-item">
-    <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText"align="center"><h1>Are you looking for a full stack application developer</h1><br>
-              <h1>to build your application or website from design to deployment?</h1>
-
-            </div>
-          </div>
-      </div>
+    <div class="carousel-item c">
+      <img class="d-block w-100" src="./public/backend.jpeg" alt="Second slide">
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
+    <div class="carousel-item c">
+      <img class="d-block w-100" src="./public/css.jpeg" alt="Third slide">
     </div>
+  </div>
+   
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -95,3 +92,11 @@
 </body>
 </html>
 
+<!--  <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText"align="center"><h1>Are you looking for a full stack application developer</h1><br>
+              <h1>to build your application or website from design to deployment?</h1>
+
+            </div>
+          </div>
+      </div> -->
