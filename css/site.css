@@ -36,12 +36,19 @@ ul li{
     
 
 }
+.page{
+    height: 100%;
+}
+html{
+   /*  height: 100%; */
+}
 body{
     background-image: url("../public/mvistaback.png");
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center; 
     font-family: 'Josefin Sans', sans-serif;
+/*     height: 100%; */
 }
 .contactJ {
     background-color: rgb(235, 235, 235);
@@ -49,13 +56,13 @@ body{
     
 }
 .carText{
-    margin-top: 15em;
-    margin-bottom: 7.5em;
+    margin-top: 10em;
+/*     margin-bottom: 2em; */
    
 }
 .c{
-margin-top: 10em;
-margin-bottom: 5em;
+margin-top:8em;
+margin-bottom: 1em;
 min-width: 100%;
 max-width: none;
 height: 700px;
@@ -65,15 +72,76 @@ height: 700px;
     margin-top:2em;
     margin-bottom:3em;
 } */
-#downArrow:hover{
-    animation: shake 0.5s;
+#downArrow2{
+    cursor: pointer;
+    position: relative;
+    bottom:-20em;
+}
+#downArrow2:hover{
+    animation: shakeDown 0.5s;
   animation-iteration-count: infinite;
+  cursor: pointer;
+}
+#downArrow{
+    margin-top:8em;
+    cursor: pointer;
+}
+#downArrow:hover{
+    animation: shakeDown 0.5s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+#upArrow{
+   /*  margin-top:1em; */
+    cursor: pointer;
+    margin-bottom:2em;
+}
+#upArrow:hover{
+    animation: shakeUp 0.5s;
+  animation-iteration-count: infinite; 
+  cursor: pointer; 
 }
 .shakeyText:hover{
-    animation: shake 0.5s;
+    animation: shaker 0.5s;
     animation-iteration-count: infinite;
+    
 }
-@keyframes shake {
+.homecontact{
+    margin-top:3em;
+    margin-left: 3em;
+}
+.homecontactbutton{
+    float: left;
+    margin:5em 5em 0em 0em;
+}
+
+@keyframes shakeDown {
+    0% { transform: translate(1px, 1px)  rotate(45deg); }
+    10% { transform: translate(-1px, -2px)  rotate(45deg); }
+    20% { transform: translate(-3px, 0px)  rotate(45deg); }
+    30% { transform: translate(3px, 2px)  rotate(45deg); }
+    40% { transform: translate(1px, -1px)  rotate(45deg); }
+    50% { transform: translate(-1px, 2px)  rotate(45deg); }
+    60% { transform: translate(-3px, 1px)  rotate(45deg); }
+    70% { transform: translate(3px, 1px)  rotate(45deg); }
+    80% { transform: translate(-1px, -1px)  rotate(45deg); }
+    90% { transform: translate(1px, 2px)  rotate(45deg); }
+    100% { transform: translate(1px, -2px)  rotate(45deg); }
+  }
+  @keyframes shakeUp {
+    0% { transform: translate(1px, 1px) rotate(-135deg); }
+    10% { transform: translate(-1px, -2px)  rotate(-135deg); }
+    20% { transform: translate(-3px, 0px)  rotate(-135deg); }
+    30% { transform: translate(3px, 2px)  rotate(-135deg); }
+    40% { transform: translate(1px, -1px)  rotate(-135deg); }
+    50% { transform: translate(-1px, 2px)  rotate(-135deg); }
+    60% { transform: translate(-3px, 1px)  rotate(-135deg); }
+    70% { transform: translate(3px, 1px)  rotate(-135deg); }
+    80% { transform: translate(-1px, -1px)  rotate(-135deg); }
+    90% { transform: translate(1px, 2px)  rotate(-135deg); }
+    100% { transform: translate(1px, -2px)  rotate(-135deg); }
+  }
+  @keyframes shaker {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
     20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -86,3 +154,37 @@ height: 700px;
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
+  
+  i {
+    border: solid black;
+    border-radius: .5em;
+    border-width: 0 .5em .5em 0;
+    display: inline-block;
+    padding: 1em;
+    
+}
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+.circleBase {
+    margin-top:1em;
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+.mePic {
+    width: 10em;
+    height: 10em;
+    background-image: url('../public/linkd.jpg');
+    border: 3px solid #000;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+
+}
