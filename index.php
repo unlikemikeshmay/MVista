@@ -43,7 +43,7 @@
     </nav>
     <div class="container-fluid"align="center">
           <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText" ><h1><b>Hi, I'm Mike. I am an application developer.</b></h1></div>
+              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText" ><h1><b>Hi, I'm Mike.</b></h1><br><h1><b>I am an application developer.</b></h1></div>
           </div>
       </div>
       <div class="container-fluid"align="center">
