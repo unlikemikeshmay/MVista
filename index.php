@@ -40,37 +40,49 @@
     </ul>
     </nav>
     <div class="page">
-    <div class="container-fluid"align="center">
-            <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " >
-                    <div class="circleBase mePic"></div>
-                </div>
-            </div>
-        </div>
         <div class="container-fluid"align="center">
-            <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText" ><h1><b>Hi, I'm Mike Jay.</b></h1><br><h4><b>I am an application developer from Toronto Ontario.</b></h4><br>
-                <h4>Writing code is my passion, and I enjoy utilizing my <span style="color:green">skills</span> for working in the full web stack to bring ideas to reality.</h4>
-                <h4 style="margin-top:1em;margin-bottom:1em;">Are you looking to build your own application or website? Or are you looking to hire a developer?</h4>
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " >
+                        <div class="circleBase mePic">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    
-      <div class="container-fluid"align="center">
-          <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12" ><button type="button"class="btn btn-lg btn-outline-dark my-2 my-lg-6"id="contactbutton">Contact</button>
+            <div class="container-fluid"align="center">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><h1><b>Hi, I'm Mike Jay.</b></h1><br>
+                    <h4><b>I am an application developer from Toronto Ontario.</b></h4><br>
+
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12">
+                        <h4>Writing code is my passion, and I enjoy utilizing my <span id="skills" style="color:green">skills</span> for working in the full web stack to bring ideas to reality.</h4>
+                    </div>
+                    <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12">
+                        <h4>Are you looking to build your own application or website? Or are you looking to hire a developer?</h4>
+                    </div>
+                </div>
+            </div>
+        
 
         <div class="container-fluid"align="center">
-          <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><i class="arrow down"id="downArrow"></i></div>
-          </div>
-      </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12" ><button type="button"class="btn btn-lg btn-outline-dark my-2 my-lg-6"id="contactbutton">Contact</button>
+                </div>
+            </div>
+        </div>
+
+            <div class="container-fluid"align="center">
+            <div class="row">
+                <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><i class="arrow down"id="downArrow"></i></div>
+            </div>
+        </div>
+        </div>
     </div>
-    </div>
-      
+<div class="parallax"></div>
 <div class="page">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -110,7 +122,7 @@
     <div class="carousel-item ">
     <div class="container-fluid">
           <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText"align="center"><h1>Enjoy building database driven apps with</h1><br>
+              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText"align="center"><h1>I enjoy building database driven apps with</h1><br>
               <h1>MSSQL and MYSQL relational databases on the back-end.</h1>
 
             </div>
@@ -145,7 +157,35 @@
         </div>
     
     </div>
+    <div class="parallax2"></div>
 <div class="page">
+    <div class="container">
+        <div class="row "id="page3Target">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2>Skills</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                
+                 <h3></h3>
+            </div>
+            <div class="col-sm-3">
+                 <h3></h3>
+            </div>
+            <div class="col-sm-3">
+                  <h3></h3>
+            </div>
+            <div class="col-sm-3">
+                 <h3></h3>
+            </div>
+        </div>
+    </div>
+    
+    
+    
     
 </div>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
@@ -157,12 +197,6 @@
 
 </body>
 </html>
-
-<!--  <div class="container-fluid">
-          <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 carText"align="center"><h1>Are you looking for a full stack application developer</h1><br>
-              <h1>to build your application or website from design to deployment?</h1>
-
-            </div>
-          </div>
-      </div> -->
+<!--todo: cdn all script sources with logic to switch to stored versions if cdn fails
+        fill out all media tags
+        double check validation for php

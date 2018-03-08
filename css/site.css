@@ -43,12 +43,12 @@ html{
    /*  height: 100%; */
 }
 body{
-    background-image: url("../public/mvistaback.png");
-    background-size:     cover;                      /* <------ */
+/*     background-image: url("../public/mvistaback.png");
+    background-size:     cover;                     
     background-repeat:   no-repeat;
     background-position: center center; 
-    font-family: 'Josefin Sans', sans-serif;
-/*     height: 100%; */
+    font-family: 'Josefin Sans', sans-serif; */
+
 }
 .contactJ {
     background-color: rgb(235, 235, 235);
@@ -172,19 +172,48 @@ height: 700px;
     -webkit-transform: rotate(-135deg);
 }
 .circleBase {
-    margin-top:1em;
+    margin-top:1.5em;
     border-radius: 50%;
-    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+    behavior: url(PIE.htc); /* for ie8 IE8 */
 }
 .mePic {
     width: 10em;
     height: 10em;
     background-image: url('../public/linkd.jpg');
-    border: 3px solid #000;
+   /*  border: 1px solid white; */
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center; 
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
 
+}
+#skills{
+    cursor: pointer;
+}
+.container{
+    max-width: 100%;
+    margin:0 auto;
+    padding: 25px;
+    background:#f9f9f9;
+}
+.container-fluid{
+    max-width: 100%;
+    margin:0 auto;
+    padding: 25px;
+    background:#f9f9f9;
+}
+.parallax{
+    background:url('../public/coffee-cup-working-happy.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height:500px;
+    width: 100%;
+}
+.parallax2{
+    background:url('../public/planning12x80.jpeg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height:500px;
+    width: 100%;
 }
