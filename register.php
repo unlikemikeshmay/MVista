@@ -14,67 +14,88 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
     
     <ul class="navbar-nav">
-    <li class="nav-item loginClass"><a href="index.php"class="nav-link">Home</a></li>
-        <li class="nav-item loginClass"><a href="Contact.php" class="nav-link" >Contact</a></li>
-   <!--      <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li> -->
+    
+        <li class="nav-item loginClass shakeyText"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item loginClass shakeyText"><a href="Contact.php" class="nav-link" >Contact</a></li>
+   
         <?php 
         if(!isset($_SESSION)){
             session_start();
         }
+        
        
        
         
         if(isset($_SESSION['EMAIL']))
         {
             echo '
-            <li class="nav-item loginClass"><a href="logout.php" class="nav-link">LogOut</a></li>
-			<li class="nav-item loginClass"><a href="profile.php" class="nav-link">Profile</a></li>
-			<li class="navbar-brand loginClass">'. $_SESSION['EMAIL'] . ' is logged in. ';
-        }
-        else{
-            echo '
-            <li class="nav-item loginClass"><a href="login.php" class="nav-link" >LogIn</a></li>
-            <li class="nav-item loginClass"><a href="register.php" class="nav-link">Register</a></li>';
-        }
-            ?>
-	</ul>
-	<div class="pubIcons">
+            <li class="nav-item loginClass shakeyText"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item loginClass shakeyText"><a href="profile.php" class="nav-link">Profile</a></li>
+            <li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. 
+            </ul>
+            <div class="pubIconsProfile">
         <ul >
         <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
         <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
         </ul>
     </div>
+            ';
+        }
+        else{
+            echo '
+            <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>
+            </ul>
+            <div class="pubIcons">
+        <ul >
+        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+        </ul>
+    </div>
+            ';
+        }
+            ?>
+ 
+   
+    
     </nav>
 
-<div class="container">
-    <div class="row">
-	<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-				<form id="registerForm" method="post" action="register.php">
-					<div class="jumbotron contactJ">
-					<div class="p-3 mb-2 bg-light text-dark card card-block">    
+ <div class="container page"align="center">
+        <div class="row justify-content-center">
+				<form id="registerForm" method="post" action="register.php"class="col-sm-6 col-md-6 col-lg-4">
+
+					<div class="col-sm-6 col-md-12 col-lg-12">    
 							<h5>Register a new account.</h5><br>
 						</div>
 						<div class="form-group">
-							<label for="inputFirstName">First name</label>
-							<input  type="text"class="form-control" id="FirstName" placeholder="Enter first name"name="FNAME">
+							
+							<input  type="text"class="form-control" id="FirstName" placeholder="First name:"name="FNAME">
 						</div>
 						<div class="form-group">
-							<label for="inputEmail">Last name</label>
-							<input  type="text"class="form-control" id="LastName" placeholder="Enter last name"name="LNAME">
+							
+							<input  type="text"class="form-control" id="LastName" placeholder="Last name:"name="LNAME">
 						</div>
 						<div class="form-group">
-							<label for="inputEmail">Email address</label>
-							<input  type="email"class="form-control" id="inputEmail" placeholder="Enter email"name="EMAIL">
+							
+							<input  type="email"class="form-control" id="inputEmail" placeholder="Email address:"name="EMAIL">
 						</div>
 						<div class="form-group">
-							<label for="inputPassword">Password</label>
-							<input  type="password"class="form-control" id="inputPassword" placeholder="Enter password"name="PASSWORD">
+							
+							<input  type="password"class="form-control" id="inputPassword" placeholder="Password:"name="PASSWORD">
 						</div>
 						<div class="form-group">
-							<label for="inputPassword">Confirm Password</label>
-							<input  type="password"class="form-control" id="confPassword" placeholder="Enter password"name="ConfPASSWORD">
+							
+							<input  type="password"class="form-control" id="confPassword" placeholder="Confirm Password:"name="ConfPASSWORD">
 						</div>
+						<div class="form-group">
 						<button type="submit"class="btn btn-outline-dark my-2 my-sm-0">Submit</button>
+						</div>
+	<div class="container-fluid"align="center">
+            <div class="row">
+                	<div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><i class="arrow down"id="RegisterDownArrow"></i>
+                	</div>
+            </div>
+    </div>
 						<div class='container'><br><span style="color:red">
 	<?php 
 if(isset($_POST['FNAME'])&&$_POST['FNAME']!=''&& isset($_POST['LNAME'])&& $_POST['LNAME'] != '' && isset($_POST['EMAIL'])&& $_POST['EMAIL'] !='' && isset($_POST['PASSWORD'])&& $_POST['PASSWORD'] !='' ){
@@ -162,12 +183,12 @@ mysqli_close($db);
 }
 ?>
 	</span></div>
-						</div>
+						
 				
 	</form>
 	</div>
 	</div>
-</div>
+
 <div class="parallax3"></div>
 
 <div class="pageFooter">
@@ -198,8 +219,8 @@ mysqli_close($db);
     </ul>
     </nav>
     <div class="container-fluid"align="center">
-                <div class="row" id="footerTarget">
-                    <div  class="col-lg-12 col-md-6 col-sm-4 col-xs-12"><i class="arrow up"id="upArrow3"></i></div>
+                <div class="row" id="footerTargetRegister">
+                    <div  class="col-lg-12 col-md-6 col-sm-4 col-xs-12"><i class="arrow up"id="upArrowRegister"></i></div>
                 </div>
             </div>
    
@@ -232,9 +253,10 @@ mysqli_close($db);
         <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
         </ul>
     </div>
-<script src="js/bootstrap.min.js"type="text/javascript"></script>
-<script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
+    <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"type="text/javascript"></script>
+<script src="js/global.js" type="text/javascript"></script>
 <script src="js/validate.js" type="text/javascript"></script>
 </body>
 </html>

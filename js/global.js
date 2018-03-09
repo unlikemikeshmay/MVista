@@ -52,4 +52,24 @@ $(document).ready(function(){
             scrollTop: $('.nervbar').offset().top
         },1500)
     });
+    $('#loginDownArrow').click(function(){
+        $('html, body').animate({
+            scrollTop: $('#footerTargetLogin').offset().top
+        },1500)
+    });
+    $('#upArrowLogin').click(function(){
+        $('html , body').animate({
+            scrollTop: $('.nervbar').offset().top
+        },1500)
+    });
+    $('#RegisterDownArrow').click(function(){
+        $('html, body').animate({
+            scrollTop: $('#footerTargetRegister').offset().top
+        },1500)
+    });
+    $('#upArrowRegister').click(function(){
+        $('html , body').animate({
+            scrollTop: $('.nervbar').offset().top
+        },1500)
+    });
 })

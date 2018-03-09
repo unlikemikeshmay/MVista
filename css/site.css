@@ -28,6 +28,10 @@ ul li{
     color:white;
     display: inline;
 }
+.loginContainer{
+    margin-top: 10em;
+    margin-bottom:10em;
+}
 .loginClass{
    
     float: right;
@@ -46,6 +50,15 @@ ul li{
     position: relative;
     left: 70%;
     top:.5em;
+}
+.pubIconsProfile{
+    position: relative;
+    left: 46%;
+    top:.5em;
+}
+.pubIconsProfile li{
+    margin-left:1em;
+    margin-right:1em;
 }
 .pubIconsF{
     position: relative;
@@ -107,7 +120,9 @@ height: 700px;
 #downArrow2{
     cursor: pointer;
     position: relative;
-    bottom:-20em;
+/*     bottom:-20em; */
+margin-top:22em;
+    margin-bottom: 8em;
 }
 #downArrow2:hover{
     animation: shakeDown 0.5s;
@@ -126,6 +141,7 @@ height: 700px;
 }
 #ContactdownArrow{
     margin-top:8em;
+    margin-bottom:8em;
     cursor: pointer;
     position: relative;
     bottom:2em;
@@ -135,7 +151,29 @@ height: 700px;
   animation-iteration-count: infinite;
   cursor: pointer;
 }
-
+#RegisterDownArrow{
+    margin-top:8em;
+    margin-bottom:8em;
+    cursor: pointer;
+    position: relative;
+    bottom:2em;
+}
+#RegisterDownArrow:hover{
+    animation: shakeDown 0.5s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+#loginDownArrow{
+    cursor: pointer;
+    position: relative;
+    margin-top:8em;
+    margin-bottom:8em;
+}
+#loginDownArrow:hover{
+    animation: shakeDown 0.5s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
 #downArrow{
     margin-top:8em;
     cursor: pointer;
@@ -152,6 +190,24 @@ height: 700px;
     margin-bottom:2em;
 }
 #upArrowContact:hover{
+    animation: shakeUp 0.5s;
+  animation-iteration-count: infinite; 
+  cursor: pointer; 
+}
+#upArrowLogin{
+    cursor: pointer;
+    margin-bottom:2em;
+}
+#upArrowLogin:hover{
+    animation: shakeUp 0.5s;
+  animation-iteration-count: infinite; 
+  cursor: pointer; 
+}
+#upArrowRegister{
+    cursor: pointer;
+    margin-bottom:2em;
+}
+#upArrowRegister:hover{
     animation: shakeUp 0.5s;
   animation-iteration-count: infinite; 
   cursor: pointer; 

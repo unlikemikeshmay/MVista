@@ -33,27 +33,33 @@
             echo '
             <li class="nav-item loginClass shakeyText"><a href="logout.php" class="nav-link">LogOut</a></li>
 			<li class="nav-item loginClass shakeyText"><a href="profile.php" class="nav-link">Profile</a></li>
-			<li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. ';
-        }
-        else{
-            echo '
-            <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
-            <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>';
-        }
-            ?>
-       
-           
-       
-       
-       
-        
-    </ul>
-    <div class="pubIcons">
+            <li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. 
+            </ul>
+            <div class="pubIconsProfile">
         <ul >
         <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
         <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
         </ul>
     </div>
+            ';
+        }
+        else{
+            echo '
+            <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>
+            </ul>
+            <div class="pubIcons">
+        <ul >
+        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+        </ul>
+    </div>
+            ';
+        }
+            ?>
+ 
+   
+    
     </nav>
     <div class="page">
         <div class="container-fluid"align="center">
@@ -100,7 +106,7 @@
     </div>
 <div class="parallax"></div>
 <div class="page">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide page" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -236,7 +242,7 @@
             </h5>
             </div>
             <div class="col-sm-2 margin">
-            <span style="color:gray"> <h2>Willingness to learn</h2></span>
+            <span style="color:gray"> <h2>Eagerness to learn</h2></span>
                   <h5>
                       I am far from perfect, but am always reading and practicing new and better  <br>ways to do things. <br>
                       A major strength of mine is my unwillingness to give up until I reach my goal, and I bring that attitude with me 

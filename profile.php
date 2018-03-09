@@ -13,40 +13,57 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
     
     <ul class="navbar-nav">
-    <li class="nav-item loginClass"><a href="index.php"class="nav-link">Home</a></li>
-        <li class="nav-item loginClass"><a href="Contact.php" class="nav-link" >Contact</a></li>
-       <!--  <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li> -->
+    
+        <li class="nav-item loginClass shakeyText"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item loginClass shakeyText"><a href="Contact.php" class="nav-link" >Contact</a></li>
+   
         <?php 
         if(!isset($_SESSION)){
             session_start();
+            if(!isset($_SESSION['EMAIL'])){
+                header("Location: login.php");
+            }
         }
+        
        
        
         
         if(isset($_SESSION['EMAIL']))
         {
             echo '
-            <li class="nav-item loginClass"><a href="logout.php" class="nav-link">LogOut</a></li>
-			<li class="nav-item loginClass"><a href="profile.php" class="nav-link">Profile</a></li>
-			<li class="navbar-brand loginClass">'. $_SESSION['EMAIL'] . ' is logged in. ';
-        }
-        else{
-            echo '
-            <li class="nav-item loginClass"><a href="login.php" class="nav-link" >LogIn</a></li>
-            <li class="nav-item loginClass"><a href="register.php" class="nav-link">Register</a></li>';
-        }
-            ?>
-    </ul>
-    <div class="pubIcons">
+            <li class="nav-item loginClass shakeyText"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item loginClass shakeyText"><a href="profile.php" class="nav-link">Profile</a></li>
+            <li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. 
+            </ul>
+            <div class="pubIconsProfile">
         <ul >
         <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
         <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
         </ul>
     </div>
+            ';
+        }
+        else{
+            echo '
+            <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>
+            </ul>
+            <div class="pubIcons">
+        <ul >
+        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+        </ul>
+    </div>
+            ';
+        }
+            ?>
+ 
+   
+    
     </nav>
-<!-- <div class="jumbotron">
+
 <h3 >Welcome to your profile <?php echo($_SESSION['FirstName'] . ' ' . $_SESSION['LastName'])?></h3>
-</div> -->
+
 <div class="container">
     <div class="row">
         <div></div>
@@ -69,32 +86,32 @@
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
-                    <h5 class="mb-3">User Profile</h5>
+                    <h5 class="mb-3">Welcome to your profile <?php echo($_SESSION['FirstName'] . ' ' . $_SESSION['LastName'])?></h5>
                     <div class="row">
                         <div class="col-md-6">
                             <h6>About</h6>
                             <p>
-                                Web Designer, UI/UX Engineer
+                              
                             </p>
                             <h6>Hobbies</h6>
                             <p>
-                                Indie music, skiing and hiking. I love the great outdoors.
+                                
                             </p>
                         </div>
                         <div class="col-md-6">
                             <h6>Recent badges</h6>
                             <a href="#" class="badge badge-dark badge-pill">html5</a>
-                            <a href="#" class="badge badge-dark badge-pill">react</a>
-                            <a href="#" class="badge badge-dark badge-pill">codeply</a>
+                           <!--  <a href="#" class="badge badge-dark badge-pill">react</a> -->
+                     <!--        <a href="#" class="badge badge-dark badge-pill">codeply</a> -->
                             <a href="#" class="badge badge-dark badge-pill">angularjs</a>
                             <a href="#" class="badge badge-dark badge-pill">css3</a>
                             <a href="#" class="badge badge-dark badge-pill">jquery</a>
                             <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
                             <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
                             <hr>
-                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
-                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                            <span class="badge badge-primary"><i class="fa fa-user"></i> 0 Followers</span>
+                            <span class="badge badge-success"><i class="fa fa-cog"></i> 0 Forks</span>
+                            <span class="badge badge-danger"><i class="fa fa-eye"></i>0 Views</span>
                         </div>
                         <div class="col-md-12">
                             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
@@ -102,29 +119,9 @@
                                 <tbody>                                    
                                     <tr>
                                         <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                            <strong><?php echo($_SESSION['FirstName'])?></strong> joined Mvista</strong>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
+                                  
                                 </tbody>
                             </table>
                         </div>
