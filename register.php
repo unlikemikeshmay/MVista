@@ -18,7 +18,9 @@
         <li class="nav-item loginClass"><a href="Contact.php" class="nav-link" >Contact</a></li>
    <!--      <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li> -->
         <?php 
-        session_start();
+        if(!isset($_SESSION)){
+            session_start();
+        }
        
        
         
@@ -35,7 +37,13 @@
             <li class="nav-item loginClass"><a href="register.php" class="nav-link">Register</a></li>';
         }
             ?>
-    </ul>
+	</ul>
+	<div class="pubIcons">
+        <ul >
+        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+        </ul>
+    </div>
     </nav>
 
 <div class="container">
@@ -160,6 +168,70 @@ mysqli_close($db);
 	</div>
 	</div>
 </div>
+<div class="parallax3"></div>
+
+<div class="pageFooter">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light ">
+    
+    <ul class="navbar-nav">
+    <li class="nav-item loginClass shakeyText"><a href="index.php"class="nav-link">Home</a></li>
+        <li class="nav-item loginClass shakeyText"><a href="Contact.php" class="nav-link" >Contact</a></li>
+    <!--     <li class="nav-item loginClass"><a href="Examples.php" class="nav-link" >Examples</a></li> -->
+        <?php 
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if(isset($_SESSION['EMAIL']))
+        {
+            echo '
+            <li class="nav-item loginClass shakeyText"><a href="logout.php" class="nav-link">LogOut</a></li>
+			<li class="nav-item loginClass shakeyText"><a href="profile.php" class="nav-link">Profile</a></li>
+			<li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. ';
+        }
+        else{
+            echo '
+            <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
+            <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>';
+        }
+            ?>
+    </ul>
+    </nav>
+    <div class="container-fluid"align="center">
+                <div class="row" id="footerTarget">
+                    <div  class="col-lg-12 col-md-6 col-sm-4 col-xs-12"><i class="arrow up"id="upArrow3"></i></div>
+                </div>
+            </div>
+   
+<div class="container"align="center">
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-12 ">
+            <span style="color:gray"><h3>Mike Jay</h3></span>
+        </div>
+    </div>
+</div>
+<div class="container"align="center">
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-12 ">
+             <span style="color:gray"><h3>Developer</h3></span>
+        </div>
+    </div>
+</div>
+<div class="container"align="center">
+    <div class="row">
+         <div class="col-sm-4 col-md-4 col-lg-12 ">
+            <span style="color:gray"><h3>admin@mvista.ca</h3></span>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="pubIconsF">
+        <ul >
+        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+        </ul>
+    </div>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>

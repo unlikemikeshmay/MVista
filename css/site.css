@@ -3,8 +3,16 @@
 @media (max-width: 1024px) {}
 @media (max-width: 860px) {}
 
-
-
+.margin{
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+}
+.left{
+    margin-left:1em;
+}
+.right{
+    margin-right:1em;
+}
 a, a:hover, a:focus  {
     text-decoration: none;
 }
@@ -33,11 +41,34 @@ ul li{
                           /* <------ */
     background-repeat:   no-repeat;
     background-position: center center; 
-    
-
+}
+.pubIcons{
+    position: relative;
+    left: 70%;
+    top:.5em;
+}
+.pubIconsF{
+    position: relative;
+    left: 90%;
+    top:.5em;
+}
+.pubIconsF li{
+    margin-left:1em;
+    margin-right:1em;
+}
+.pubIcons li{
+    margin-left:1em;
+    margin-right:1em;
+}
+.margintop{
+    margin-top:3em;
+    margin: 0 1em 0 1em;
 }
 .page{
     height: 100%;
+}
+.pageFooter{
+height:30em;
 }
 html{
    /*  height: 100%; */
@@ -48,7 +79,7 @@ body{
     background-repeat:   no-repeat;
     background-position: center center; 
     font-family: 'Josefin Sans', sans-serif; */
-
+    background:#f9f9f9;
 }
 .contactJ {
     background-color: rgb(235, 235, 235);
@@ -60,6 +91,7 @@ body{
 /*     margin-bottom: 2em; */
    
 }
+
 .c{
 margin-top:8em;
 margin-bottom: 1em;
@@ -82,14 +114,47 @@ height: 700px;
   animation-iteration-count: infinite;
   cursor: pointer;
 }
+#downArrow3{
+    cursor: pointer;
+    position: relative;
+    margin-bottom:2em;
+}
+#downArrow3:hover{
+    animation: shakeDown 0.5s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+#ContactdownArrow{
+    margin-top:8em;
+    cursor: pointer;
+    position: relative;
+    bottom:2em;
+}
+#ContactdownArrow:hover{
+    animation: shakeDown 0.5s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+}
+
 #downArrow{
     margin-top:8em;
     cursor: pointer;
+    position: relative;
+    bottom:2em;
 }
 #downArrow:hover{
     animation: shakeDown 0.5s;
   animation-iteration-count: infinite;
   cursor: pointer;
+}
+#upArrowContact{
+    cursor: pointer;
+    margin-bottom:2em;
+}
+#upArrowContact:hover{
+    animation: shakeUp 0.5s;
+  animation-iteration-count: infinite; 
+  cursor: pointer; 
 }
 #upArrow{
    /*  margin-top:1em; */
@@ -101,6 +166,26 @@ height: 700px;
   animation-iteration-count: infinite; 
   cursor: pointer; 
 }
+#upArrow2{
+    /*  margin-top:1em; */
+     cursor: pointer;
+     margin-bottom:2em;
+ }
+ #upArrow2:hover{
+     animation: shakeUp 0.5s;
+   animation-iteration-count: infinite; 
+   cursor: pointer; 
+ }
+ #upArrow3{
+    /*  margin-top:1em; */
+     cursor: pointer;
+     margin-bottom:2em;
+ }
+ #upArrow3:hover{
+     animation: shakeUp 0.5s;
+   animation-iteration-count: infinite; 
+   cursor: pointer; 
+ }
 .shakeyText:hover{
     animation: shaker 0.5s;
     animation-iteration-count: infinite;
@@ -211,9 +296,42 @@ height: 700px;
     width: 100%;
 }
 .parallax2{
+    margin-top: 23em;
     background:url('../public/planning12x80.jpeg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
     height:500px;
     width: 100%;
+}
+.parallax3{
+    
+    background:url('../public/frontend12x80.jpeg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height:500px;
+    width: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: red;
 }

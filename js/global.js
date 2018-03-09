@@ -2,7 +2,7 @@
 $(document).ready(function(){
     $('#downArrow').click(function(){
         $('html, body').animate({
-            scrollTop: $('#carouselTarget').offset().top
+            scrollTop: $('#page2Target').offset().top
         },1500)
     });
     $('#upArrow').click(function(){
@@ -24,6 +24,32 @@ $(document).ready(function(){
     $('#downArrow2').click(function(){
         $('html, body').animate({
             scrollTop: $('#page3Target').offset().top
-        },500)
+        },1500)
+    });
+    $('#downArrow3').click(function(){
+        $('html, body').animate({
+            scrollTop: $('#footerTarget').offset().top
+        },1500)
+    });
+    $('#upArrow2').click(function(){
+        $('html, body').animate({
+            scrollTop: $('#page2Target').offset().top
+        },1500)
+    });
+    $('#upArrow3').click(function(){
+        $('html, body').animate({
+            scrollTop: $('#page3Target').offset().top
+        },1500)
+    });
+    $('#ContactdownArrow').click(function(){
+        $('html, body').animate({
+            scrollTop: $('#footerTargetContact').offset().top
+        },1500)
+            
+    });
+    $('#upArrowContact').click(function(){
+        $('html , body').animate({
+            scrollTop: $('.nervbar').offset().top
+        },1500)
     });
 })
