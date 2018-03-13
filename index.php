@@ -13,8 +13,12 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark nervbar">
-    
+<nav class="navbar bg-dark navbar-dark nervbar">
+   
+    <div class="collapse navbar-toggleable-xs" id="collapseNavbar">
+    <button class="navbar-toggler hidden-sm-up"type="button"data-toggle="collapse"data-target="#collapseNavbar">
+    &#9776;
+    </button>
     <ul class="navbar-nav">
     
         <li class="nav-item loginClass shakeyText"><a href="index.php"class="nav-link">Home</a></li>
@@ -59,7 +63,7 @@
             ?>
  
    
-    
+    </div>
     </nav>
     <div class="page">
         <div class="container-fluid"align="center">

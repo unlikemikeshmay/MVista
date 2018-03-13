@@ -38,13 +38,7 @@ ul li{
     margin-left:2em;
 }
 .nervbar{
-    background-image: url("../public/navpattern.png");
-    border-bottom: .1em solid;
-    background-size:     cover;
-    border-bottom-color: black;
-                          /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center; 
+  background-color: dimgray
 }
 .pubIcons{
     position: relative;
