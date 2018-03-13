@@ -72,4 +72,5 @@ $(document).ready(function(){
             scrollTop: $('.nervbar').offset().top
         },1500)
     });
+
 })

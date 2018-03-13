@@ -13,62 +13,47 @@
 
 </head>
 <body>
-<nav class="navbar bg-dark navbar-dark nervbar">
-   
-    <div class="collapse navbar-toggleable-xs" id="collapseNavbar">
-    <button class="navbar-toggler hidden-sm-up"type="button"data-toggle="collapse"data-target="#collapseNavbar">
-    &#9776;
-    </button>
-    <ul class="navbar-nav">
-    
-        <li class="nav-item loginClass shakeyText"><a href="index.php"class="nav-link">Home</a></li>
-        <li class="nav-item loginClass shakeyText"><a href="Contact.php" class="nav-link" >Contact</a></li>
-   
-        <?php 
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        
-       
-       
-        
-        if(isset($_SESSION['EMAIL']))
-        {
-            echo '
-            <li class="nav-item loginClass shakeyText"><a href="logout.php" class="nav-link">LogOut</a></li>
-			<li class="nav-item loginClass shakeyText"><a href="profile.php" class="nav-link">Profile</a></li>
-            <li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. 
-            </ul>
-            <div class="pubIconsProfile">
-        <ul >
-        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
-        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+<nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-light nervbar">
+    <div class="container">
+        <button class="navbar-toggler"data-toggle="collapse" data-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"id="mainNav">
+        <ul class="navbar-nav">        
+    <li class="nav-item loginClass shakeyText"><a href="index.php"class="nav-link">Home</a></li>
+    <li class="nav-item loginClass shakeyText"><a href="Contact.php" class="nav-link" >Contact</a></li>
+    <?php 
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    if(isset($_SESSION['EMAIL']))
+    {
+        echo '
+        <li class="nav-item loginClass shakeyText"><a href="logout.php" class="nav-link">LogOut</a></li>
+        <li class="nav-item loginClass shakeyText"><a href="profile.php" class="nav-link">Profile</a></li>
+        <li class="navbar-brand loginClass shakeyText">'. $_SESSION['EMAIL'] . ' is logged in. 
+        <li class="navbar-brand loginClass shakeyText"> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+        <li class="navbar-brand loginClass shakeyText"> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
         </ul>
-    </div>
-            ';
-        }
-        else{
-            echo '
-            <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
-            <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>
-            </ul>
-            <div class="pubIcons">
-        <ul >
-        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
-        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
-        </ul>
-    </div>
-            ';
-        }
-            ?>
- 
-   
+       
+        ';
+    }
+    else{
+        echo '
+        <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
+        <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>
+        <li class="navbar-brand loginClass shakeyText"> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
+    <li class="navbar-brand loginClass shakeyText"> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
+        </ul>';
+    }
+        ?>
+        </div>
     </div>
     </nav>
     <div class="page">
         <div class="container-fluid"align="center">
                 <div class="row">
-                    <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " >
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
                         <div class="circleBase mePic">
                         </div>
                     </div>
@@ -76,13 +61,13 @@
             </div>
             <div class="container-fluid"align="center">
                 <div class="row">
-                    <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><h1>Hi, I'm Mike Jay.</h1><br>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ><h1>Hi, I'm Mike Jay.</h1><br>
                     <h4>I am an application developer from Toronto Ontario.</h4><br>
 
                     </div>
                 </div>
             </div>
-            <div class="container ">
+            <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 col-md-6 col-xs-12">
                         <h4>Writing code is my passion, and I enjoy utilizing my <span id="skills" style="color:green">skills</span> for working in the full web stack to bring ideas to reality.</h4>
@@ -96,18 +81,19 @@
 
         <div class="container-fluid"align="center">
             <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12" ><button type="button"class="btn btn-lg btn-outline-dark my-2 my-lg-6"id="contactbutton">Contact</button>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ><button type="button"class="btn btn-lg btn-outline-dark my-2 my-lg-6"id="contactbutton">Contact</button>
                 </div>
             </div>
         </div>
 
             <div class="container-fluid"align="center">
             <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><i class="arrow down"id="downArrow"></i></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " ><i class="arrow down"id="downArrow"></i></div>
             </div>
         </div>
         </div>
     </div>
+    
 <div class="parallax"></div>
 <div class="page">
     <div id="carouselExampleIndicators" class="carousel slide page" data-ride="carousel">

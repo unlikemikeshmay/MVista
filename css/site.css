@@ -37,9 +37,18 @@ ul li{
     float: right;
     margin-left:2em;
 }
+
 .nervbar{
-  background-color: dimgray
+
+
 }
+#GitIcon{
+display: inline-block
+}
+#LinkIcon{
+    display: inline-block
+}
+
 .pubIcons{
     position: relative;
     left: 70%;
@@ -47,7 +56,8 @@ ul li{
 }
 .pubIconsProfile{
     position: relative;
-    left: 46%;
+   
+   
     top:.5em;
 }
 .pubIconsProfile li{
@@ -73,6 +83,7 @@ ul li{
 }
 .page{
     height: 100%;
+    margin-bottom:25em;
 }
 .pageFooter{
 height:30em;
@@ -86,7 +97,9 @@ body{
     background-repeat:   no-repeat;
     background-position: center center; 
     font-family: 'Josefin Sans', sans-serif; */
+    width:100%;
     background:#f9f9f9;
+    margin:0;
 }
 .contactJ {
     background-color: rgb(235, 235, 235);
@@ -342,7 +355,7 @@ margin-top:22em;
     background:url('../public/coffee-cup-working-happy.jpg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-    height:500px;
+    height:300px;
     width: 100%;
 }
 .parallax2{
@@ -350,7 +363,7 @@ margin-top:22em;
     background:url('../public/planning12x80.jpeg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-    height:500px;
+    height:300px;
     width: 100%;
 }
 .parallax3{
@@ -358,7 +371,7 @@ margin-top:22em;
     background:url('../public/frontend12x80.jpeg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
-    height:500px;
+    height:300px;
     width: 100%;
 }
 
