@@ -140,12 +140,29 @@ else{
 			}
 			else
 			{
-				$sql = sprintf("INSERT INTO `accounts` (first_name, last_name,email,hash) VALUES (
-					'%s','%s','%s','%s'
+                date_default_timezone_set('Canada/Eastern');
+                
+               
+
+                /* $derp = (STR_TO_DATE( $RegDate,'%m/%d/%Y')); */
+              /*   $RegDate = date();
+                var_dump($RegDate);
+                $date = date("m-d-Y",$RegDate);
+                $date = strtotime($date);
+                var_dump($date);
+               /*  var_dump($date2); */ 
+               /*  $var = "STR_TO_DATE('$date',%y/%m/%d)"; */
+         /*        $srtdate = "STR_TO_DATE(".$date.',%Y-%m-%d'.")"; */
+          /* "STR_TO_DATE('$date2','%m-%d-%y')" */
+				$sql = sprintf("INSERT INTO `accounts` (first_name, last_name,email,hash,registerDate) VALUES (
+					'%s','%s','%s','%s',%s
 				)",mysqli_real_escape_string($db,$Fname),
 				mysqli_real_escape_string($db,$Lname),
 				mysqli_real_escape_string($db,$Email),
-				mysqli_real_escape_string($db,$Hsh));
+                mysqli_real_escape_string($db,$Hsh),
+                mysqli_real_escape_string($db,'NOW()')
+               
+            );
 				$query = mysqli_query($db,$sql);
 				if(!$query){
 					echo("error description: ". mysqli_error($db));
@@ -156,19 +173,19 @@ else{
 					if(!isset($_SESSION)){
 						session_start();
 					}
-					
+					/* $_SESSION['REGISTERDATE'] =  $RegDate; */
 					$_SESSION['EMAIL'] = $_POST['EMAIL'];
 					$_SESSION['FirstName'] = $_POST['FNAME'];
 					$_SESSION['LastName'] = $_POST['LNAME'];
 					
 
 					header("location:profile.php");
-					
+					mysqli_close($db);
 				}	
 			}		
 			mysqli_free_result($result);
 		}
-mysqli_close($db);
+/* mysqli_close($db); */
 }
 ?>
 	</span></div>
@@ -213,35 +230,29 @@ mysqli_close($db);
                 </div>
             </div>
    
-<div class="container"align="center">
+            <div class="container"align="center">
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-12 ">
-            <span style="color:gray"><h3>Mike Jay</h3></span>
+            <span style="color:gray"><h4>Mike Jay</h4></span>
         </div>
     </div>
 </div>
 <div class="container"align="center">
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-12 ">
-             <span style="color:gray"><h3>Developer</h3></span>
+             <span style="color:gray"><h4>admin@mvista.ca</h4></span>
         </div>
     </div>
 </div>
 <div class="container"align="center">
     <div class="row">
          <div class="col-sm-4 col-md-4 col-lg-12 ">
-            <span style="color:gray"><h3>admin@mvista.ca</h3></span>
+            <span style="color:gray"><h4 id="date"></h3></span>
         </div>
     </div>
 </div>
 
 </div>
-<div class="pubIconsF">
-        <ul >
-        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
-        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
-        </ul>
-    </div>
     <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>

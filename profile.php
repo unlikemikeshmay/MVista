@@ -48,7 +48,29 @@
     </div>
     </nav>
 
-<h3 >Welcome to your profile <?php echo($_SESSION['FirstName'] . ' ' . $_SESSION['LastName'])?></h3>
+<h3 > <?php 
+if(isset($_SESSION['EMAIL']))
+{
+    
+    $TorontoDate = date_default_timezone_set('Canada/Eastern');
+    function greeting(){
+        $hour = date('H');
+        if($hour < 12){
+            $greeting = "Good morning ".$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'];
+        }
+        if($hour>=12 && $hour<18){
+            $greeting = "Good afternoon ".$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'];
+        }
+        else{
+            $greeting = "Good evening ".$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'];
+        }
+        return $greeting;
+    }
+  echo greeting();
+}
+
+
+?></h3>
 
 <div class="container">
     <div class="row">

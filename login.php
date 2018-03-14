@@ -186,35 +186,29 @@
                 </div>
             </div>
    
-<div class="container"align="center">
+            <div class="container"align="center">
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-12 ">
-            <span style="color:gray"><h3>Mike Jay</h3></span>
+            <span style="color:gray"><h4>Mike Jay</h4></span>
         </div>
     </div>
 </div>
 <div class="container"align="center">
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-12 ">
-             <span style="color:gray"><h3>Developer</h3></span>
+             <span style="color:gray"><h4>admin@mvista.ca</h4></span>
         </div>
     </div>
 </div>
 <div class="container"align="center">
     <div class="row">
          <div class="col-sm-4 col-md-4 col-lg-12 ">
-            <span style="color:gray"><h3>admin@mvista.ca</h3></span>
+            <span style="color:gray"><h4 id="date"></h3></span>
         </div>
     </div>
 </div>
 
 </div>
-<div class="pubIconsF">
-        <ul >
-        <li> <a href="https://linkedin.com/in/mike-jay-away"><img src="./public/In-Black-34px-R.png"/> </a></li>
-        <li> <a href="https://github.com/unlikemikeshmay"><img src="./public/GitHub-Mark-32px.png"/> </a></li>
-        </ul>
-    </div>
     <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
