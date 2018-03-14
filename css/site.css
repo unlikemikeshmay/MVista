@@ -28,6 +28,37 @@ ul li{
     color:white;
     display: inline;
 }
+.profile-pic {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    position: relative;
+    bottom: 3em;
+ 
+  
+}
+
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+}
 .loginContainer{
     margin-top: 10em;
     margin-bottom:10em;
@@ -353,6 +384,13 @@ margin-top:22em;
 }
 .parallax{
     background:url('../public/coffee-cup-working-happy.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height:300px;
+    width: 100%;
+}
+.parallaxE{
+    background:url('../public/earth-space.jpg') no-repeat center;
     background-size: cover;
     background-attachment: fixed;
     height:300px;

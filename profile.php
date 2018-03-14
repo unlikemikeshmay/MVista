@@ -48,7 +48,22 @@
     </div>
     </nav>
 
-<h3 > <?php 
+
+
+<div class="parallaxE"></div>
+<div class="container">
+    <div class="row">
+      
+            <div class="col-lg-4 order-lg-1">
+                <a href="#" class="profile-pic">
+                     <div class="profile-pic" style="background-image: url('./public/linkd.jpg')" >
+
+                          <span class="glyphicon glyphicon-camera"></span>
+                           <span>Change Image</span>
+
+                         </div>
+                </a>
+                <h3 > <?php 
 if(isset($_SESSION['EMAIL']))
 {
     
@@ -56,13 +71,35 @@ if(isset($_SESSION['EMAIL']))
     function greeting(){
         $hour = date('H');
         if($hour < 12){
-            $greeting = "Good morning ".$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'];
+            $greeting = '
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h4> Good morning <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>
+            </div>    
+            </div>
+            </div>';
+           
         }
         if($hour>=12 && $hour<18){
-            $greeting = "Good afternoon ".$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'];
+            $greeting =  '
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h4> Good afternoon <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>
+            </div>    
+            </div>
+            </div>';
         }
         else{
-            $greeting = "Good evening ".$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'];
+            $greeting = '
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h4> Good evening <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>
+                </div>    
+            </div>
+            </div>';
         }
         return $greeting;
     }
@@ -71,11 +108,15 @@ if(isset($_SESSION['EMAIL']))
 
 
 ?></h3>
-
-<div class="container">
-    <div class="row">
-        <div></div>
+            </div>
+           
+        </div>
+           
     </div>
+    
+</div>
+          
+          
 
 </div>
 <div class="container">
@@ -97,15 +138,24 @@ if(isset($_SESSION['EMAIL']))
                     <h5 class="mb-3">Welcome to your profile <?php echo($_SESSION['FirstName'] . ' ' . $_SESSION['LastName'])?></h5>
                     <div class="row">
                         <div class="col-md-6">
-                            <h6>About</h6>
-                            <p>
-                              
-                            </p>
-                            <h6>Hobbies</h6>
-                            <p>
-                                
-                            </p>
-                        </div>
+                            <ul class="list-inline">
+                                <li list-inline-item> <a class="btn btn-lg btn-outline-dark my-2 my-lg-6" href="#collapseAbout1"data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">About </a>
+                               <div class="collapse" id="collapseAbout1">
+                                    <div class="card card-body">
+                                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    </div>
+                                </div>
+                            </div></li>
+                                <li list-inline-item> <a class="btn btn-lg btn-outline-dark my-2 my-lg-6" href="#collapseAbout2"data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">Info</a>
+                               <div class="collapse" id="collapseAbout2">
+                                    <div class="card card-body">
+                                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    </div>
+                                </div>
+                            </div>
+                                <li></li>
+                            </ul>
+                        
                         <div class="col-md-6">
                             <h6>Recent badges</h6>
                             <a href="#" class="badge badge-dark badge-pill">html5</a>
@@ -261,20 +311,15 @@ if(isset($_SESSION['EMAIL']))
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <h6 class="mt-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
-        </div>
+       
     </div>
 </div>
-<script src="js/bootstrap.min.js"type="text/javascript"></script>
 <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
-<script src="js/global.js" type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"type="text/javascript"></script>
+<script src="js/util.js"type="text/javascript"></script><!-- need this for bootstraps carousel also -->
+<script src="js/carousel.js"type="text/javascript"></script><!-- need for carousel -->
+<script src="js/global.js" type="text/javascript"></script>
 </body>
 </html>
         
