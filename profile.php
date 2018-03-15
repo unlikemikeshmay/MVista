@@ -36,6 +36,7 @@
         ';
     }
     else{
+        header('location:index.php');
         echo '
         <li class="nav-item loginClass shakeyText"><a href="login.php" class="nav-link" >LogIn</a></li>
         <li class="nav-item loginClass shakeyText"><a href="register.php" class="nav-link">Register</a></li>
@@ -54,17 +55,15 @@
 <div class="container">
     <div class="row">
       
-            <div class="col-lg-4 order-lg-1">
-            <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
-                <a href="#" class="profile-pic">
-                     <div class="profile-pic" style="background-image: url('./public/linkd.jpg')" >
+        <div class="col-lg-4 order-lg-1">
+             <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
+                <div class="containerz">
+                    <?php echo $_SESSION['IMAGE']; ?>
+                    <div class="overlay">
+                         <div class="text">Hello World</div>
+                    </div>
+                </div>
 
-                          <span class="glyphicon glyphicon-camera"></span>
-                           <span id="changeimage">Change Image</span>
-                         </div>
-                </a>
-                
-                
                 <div class="col-lg-4 order-lg-1 e hidden">
     
         <div class="form-group">
@@ -95,23 +94,16 @@
                             $aboutSet = array_column($userArray,'about');
                             $infoSet = array_column($userArray,'info');
                             $todoSet = array_column($userArray,'todo');
+                           
                             $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
-                            $_SESSION['IMAGE'] = (isset($imageSet)?$imageSet[0]:'./public/linkd.jpg');
+                            $_SESSION['IMAGE'] = '<img id="changeimage" class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" />';
                             $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
                             $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
                             $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
-                            
-
-                          /*    var_dump($userArray); */
-                           
-                           
-
-                            
+                          /* echo $_SESSION['IMAGE'];  */            
                            
                         } 
                     }
-                    
-
                 }
 if(isset($_POST['submit'])){
     echo '
@@ -123,16 +115,12 @@ if(isset($_POST['submit'])){
     </div>
     </div>';
 if(isset($_FILES)){
-    echo 'there be files';
-     /* $imageName = ($_FILES(['file']['name'])); */
+
      $imageData = file_get_contents($_FILES['file']['tmp_name']);
      $imageDataForDb = mysqli_real_escape_string($db,$imageData);
-     /* $imageType = $_FILES(['file']['type']); */
+
      $email =  $_SESSION['EMAIL'];
      $stmt = $db->prepare("update accounts set image = '$imageDataForDb' where email ='$email'");
-     /* $stmt->mysqli_bind_param(1,mysqli_real_escape_string($db,$imageName));
-     $stmt->mysqli_bind_param(2,mysqli_real_escape_string($db,$imageType));
-     $stmt->mysqli_bind_param(3,mysqli_real_escape_string($db,$imageData)); */
      if($stmt->execute())
      {
          echo '
@@ -143,9 +131,7 @@ if(isset($_FILES)){
          </div>    
          </div>
          </div>';
-      /*    var_export($stmt, true);
-         var_export($imageData, true);
-         var_export($email, true); */
+
      }
 
     
@@ -160,9 +146,7 @@ if(isset($_FILES)){
         </div>    
         </div>
         </div>';
-       /*  var_export($stmt, true);
-        var_export($imageData, true);
-        var_export($email, true); */
+
     }
 
 
@@ -233,12 +217,19 @@ if(isset($_SESSION['EMAIL']))
                 <li class="nav-item">
                     <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
                 </li>
-               <!--  <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                </li> -->
+              <script>
+              $(document).ready(function(){
+                var image = document.createElement('img');
+    
+    image.src="data:image/gif;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==";
+        
+    image.width=100;
+    image.height=100;
+    image.alt="here should be some image";
+        
+    document.body.appendChild(image);
+              })
+              </script>
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
