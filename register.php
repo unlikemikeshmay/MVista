@@ -102,7 +102,7 @@ else{
 }
  if($ok)
  {
-	$db = mysqli_connect('127.0.0.1','root','root', 'mvista');
+	include './DB/connect.php';
 
 	/* if($db)
 	{
@@ -140,22 +140,10 @@ else{
 			}
 			else
 			{
-                date_default_timezone_set('Canada/Eastern');
                 
-               
-
-                /* $derp = (STR_TO_DATE( $RegDate,'%m/%d/%Y')); */
-              /*   $RegDate = date();
-                var_dump($RegDate);
-                $date = date("m-d-Y",$RegDate);
-                $date = strtotime($date);
-                var_dump($date);
-               /*  var_dump($date2); */ 
-               /*  $var = "STR_TO_DATE('$date',%y/%m/%d)"; */
-         /*        $srtdate = "STR_TO_DATE(".$date.',%Y-%m-%d'.")"; */
-          /* "STR_TO_DATE('$date2','%m-%d-%y')" */
+                date_default_timezone_set('Canada/Eastern');
 				$sql = sprintf("INSERT INTO `accounts` (first_name, last_name,email,hash,registerDate) VALUES (
-					'%s','%s','%s','%s',%s
+					'%s','%s','%s','%s','%s'
 				)",mysqli_real_escape_string($db,$Fname),
 				mysqli_real_escape_string($db,$Lname),
 				mysqli_real_escape_string($db,$Email),

@@ -78,4 +78,9 @@ y = n.getFullYear();
 m = n.getMonth() + 1;
 d = n.getDate();
 $('#date').html(m + "/" + d + "/" + y)
+
+$('#changeimage').click(function(){
+    $('.e').toggleClass('hidden',3000,'easeOutSine');
+})
+
 })

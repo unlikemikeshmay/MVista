@@ -55,15 +55,122 @@
     <div class="row">
       
             <div class="col-lg-4 order-lg-1">
+            <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
                 <a href="#" class="profile-pic">
                      <div class="profile-pic" style="background-image: url('./public/linkd.jpg')" >
 
                           <span class="glyphicon glyphicon-camera"></span>
-                           <span>Change Image</span>
-
+                           <span id="changeimage">Change Image</span>
                          </div>
                 </a>
-                <h3 > <?php 
+                
+                
+                <div class="col-lg-4 order-lg-1 e hidden">
+    
+        <div class="form-group">
+        <label class="control-label btn btn-sm btn-outline-dark" for="file">Image</label>
+        <div class="input-group in ">
+            <input  type="file" name="file" id="file"  />
+        </div>
+      </div>
+        <input type="submit" name="submit" class="btn btn-sm btn-outline-dark"value="update">
+                </div>
+                </form>
+
+                <h3 >
+                
+                <?php 
+                include_once('./DB/connect.php');
+                if($db!==false){
+                    $email =  $_SESSION['EMAIL'];
+                    $UserSession = "SELECT * FROM accounts WHERE email ='$email'"; 
+                    if($result = mysqli_query($db, $UserSession)){
+                        $userArray = array();
+                        foreach($result as $row){
+                            array_push($userArray,$row);
+                  
+                            
+                            $regiDateSet = array_column($userArray,'registerDate');
+                            $imageSet = array_column($userArray,'image');
+                            $aboutSet = array_column($userArray,'about');
+                            $infoSet = array_column($userArray,'info');
+                            $todoSet = array_column($userArray,'todo');
+                            $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
+                            $_SESSION['IMAGE'] = (isset($imageSet)?$imageSet[0]:'./public/linkd.jpg');
+                            $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
+                            $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
+                            $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
+                            
+
+                          /*    var_dump($userArray); */
+                           
+                           
+
+                            
+                           
+                        } 
+                    }
+                    
+
+                }
+if(isset($_POST['submit'])){
+    echo '
+    <div class="container">
+    <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <h4> post is set</h4>
+    </div>    
+    </div>
+    </div>';
+if(isset($_FILES)){
+    echo 'there be files';
+     /* $imageName = ($_FILES(['file']['name'])); */
+     $imageData = file_get_contents($_FILES['file']['tmp_name']);
+     $imageDataForDb = mysqli_real_escape_string($db,$imageData);
+     /* $imageType = $_FILES(['file']['type']); */
+     $email =  $_SESSION['EMAIL'];
+     $stmt = $db->prepare("update accounts set image = '$imageDataForDb' where email ='$email'");
+     /* $stmt->mysqli_bind_param(1,mysqli_real_escape_string($db,$imageName));
+     $stmt->mysqli_bind_param(2,mysqli_real_escape_string($db,$imageType));
+     $stmt->mysqli_bind_param(3,mysqli_real_escape_string($db,$imageData)); */
+     if($stmt->execute())
+     {
+         echo '
+         <div class="container">
+         <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+             <h4> great success</h4>' . $_SESSION['EMAIL'] . ' 
+         </div>    
+         </div>
+         </div>';
+      /*    var_export($stmt, true);
+         var_export($imageData, true);
+         var_export($email, true); */
+     }
+
+    
+   
+    }
+    else {
+        echo '
+        <div class="container">
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h4> great failure</h4>
+        </div>    
+        </div>
+        </div>';
+       /*  var_export($stmt, true);
+        var_export($imageData, true);
+        var_export($email, true); */
+    }
+
+
+}
+
+?>
+                
+                 <?php 
 if(isset($_SESSION['EMAIL']))
 {
     
@@ -126,12 +233,12 @@ if(isset($_SESSION['EMAIL']))
                 <li class="nav-item">
                     <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
                 </li>
-                <li class="nav-item">
+               <!--  <li class="nav-item">
                     <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
                 </li>
                 <li class="nav-item">
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                </li>
+                </li> -->
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
@@ -156,11 +263,10 @@ if(isset($_SESSION['EMAIL']))
                                 <li></li>
                             </ul>
                         
-                        <div class="col-md-6">
+                       <!--  <div class="col-md-6">
                             <h6>Recent badges</h6>
                             <a href="#" class="badge badge-dark badge-pill">html5</a>
-                           <!--  <a href="#" class="badge badge-dark badge-pill">react</a> -->
-                     <!--        <a href="#" class="badge badge-dark badge-pill">codeply</a> -->
+                  
                             <a href="#" class="badge badge-dark badge-pill">angularjs</a>
                             <a href="#" class="badge badge-dark badge-pill">css3</a>
                             <a href="#" class="badge badge-dark badge-pill">jquery</a>
@@ -170,7 +276,7 @@ if(isset($_SESSION['EMAIL']))
                             <span class="badge badge-primary"><i class="fa fa-user"></i> 0 Followers</span>
                             <span class="badge badge-success"><i class="fa fa-cog"></i> 0 Forks</span>
                             <span class="badge badge-danger"><i class="fa fa-eye"></i>0 Views</span>
-                        </div>
+                        </div> -->
                         <div class="col-md-12">
                             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
                             <table class="table table-sm table-hover table-striped">
@@ -314,12 +420,11 @@ if(isset($_SESSION['EMAIL']))
        
     </div>
 </div>
-<script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
+    <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
-<script src="js/util.js"type="text/javascript"></script><!-- need this for bootstraps carousel also -->
-<script src="js/carousel.js"type="text/javascript"></script><!-- need for carousel -->
 <script src="js/global.js" type="text/javascript"></script>
+<script src="js/validate.js" type="text/javascript"></script>
 </body>
 </html>
         

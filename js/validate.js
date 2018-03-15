@@ -1,4 +1,6 @@
 $(function(){
+  
+
     $('#contactForm').validate({
         rules:{
             FROM:{
@@ -108,6 +110,38 @@ $(function(){
             }
         }
     })
+    $.validator.addMethod('filesize', function(value, element, param) {
+        return this.optional(element) || (element.files[0].size <= param) 
+     });    
+     
+     $('#ImageChangeForm').validate({
+             rules: {
+                 file: {
+                     required: true, 
+                     extension: "png|jpeg|jpg",
+                     filesize: 1048576,   
+                 }
+             },
+             messages: 
+                { 
+                 file: "File must be JPEG or PNG, less than 1MB" 
+                },
+             highlight: function(element) {
+                 $(element).closest('.form-group').addClass('has-error');
+             },
+             unhighlight: function(element) {
+                 $(element).closest('.form-group').removeClass('has-error');
+             },
+             errorElement: 'div',
+             errorClass: 'help-block',
+             errorPlacement: function(error, element) {
+                 if(element.parent('.input-group').length) {
+                     error.insertAfter(element.parent());
+                 } else {
+                     error.insertAfter(element);
+                 }
+             }
+         });
 })
 /* 	name="FNAME">
 	name="LNAME">
