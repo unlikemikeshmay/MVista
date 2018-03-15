@@ -1,3 +1,45 @@
+<?php
+include_once('./DB/connect.php');
+if(!isset($_SESSION)){
+    session_start();
+}
+                if($db){
+                    echo 'db';
+                    $email =  $_SESSION['EMAIL'];
+                    $UserSession = "SELECT * FROM accounts WHERE email ='$email'"; 
+                    if($result = mysqli_query($db, $UserSession)){
+                        $userArray = array();
+                        foreach($result as $row){
+                            array_push($userArray,$row);
+                  
+                            
+                            $regiDateSet = array_column($userArray,'registerDate');
+                            $imageSet = array_column($userArray,'image');
+                            $aboutSet = array_column($userArray,'about');
+                            $infoSet = array_column($userArray,'info');
+                            $todoSet = array_column($userArray,'todo');
+                           var_dump(array_column($userArray,'image'));
+                           if(!isset($imageSet)){
+                                 $_SESSION['IMAGE'] = '<img src="./public/linkd.jpg">';
+                                 echo 'default image';
+                           }
+                           else{
+                            $_SESSION['IMAGE'] = '<img src="data:image/jpeg;base64,'.base64_encode($imageSet[0] ).'"height:"100" width:"100" />';
+                            echo 'set image';
+                           }
+                            $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
+                            
+                            $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
+                            $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
+                            $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
+                        /* var_dump( $_SESSION['IMAGE']); */
+                       echo  $imageSet[0];
+                           
+                        } 
+                    }
+                    $mysqli->close();
+                }
+?>
 <DOCTYPE html>
 <html>
 <head>
@@ -58,10 +100,8 @@
         <div class="col-lg-4 order-lg-1">
              <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
                 <div class="containerz">
-                    <?php echo $_SESSION['IMAGE']; ?>
-                    <div class="overlay">
-                         <div class="text">Hello World</div>
-                    </div>
+                    <?php echo($_SESSION['IMAGE']); ?>
+             
                 </div>
 
                 <div class="col-lg-4 order-lg-1 e hidden">
@@ -79,32 +119,7 @@
                 <h3 >
                 
                 <?php 
-                include_once('./DB/connect.php');
-                if($db!==false){
-                    $email =  $_SESSION['EMAIL'];
-                    $UserSession = "SELECT * FROM accounts WHERE email ='$email'"; 
-                    if($result = mysqli_query($db, $UserSession)){
-                        $userArray = array();
-                        foreach($result as $row){
-                            array_push($userArray,$row);
-                  
-                            
-                            $regiDateSet = array_column($userArray,'registerDate');
-                            $imageSet = array_column($userArray,'image');
-                            $aboutSet = array_column($userArray,'about');
-                            $infoSet = array_column($userArray,'info');
-                            $todoSet = array_column($userArray,'todo');
-                           
-                            $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
-                            $_SESSION['IMAGE'] = '<img id="changeimage" class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" />';
-                            $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
-                            $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
-                            $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
-                          /* echo $_SESSION['IMAGE'];  */            
-                           
-                        } 
-                    }
-                }
+    echo 'fuck';
 if(isset($_POST['submit'])){
     echo '
     <div class="container">
@@ -114,13 +129,13 @@ if(isset($_POST['submit'])){
     </div>    
     </div>
     </div>';
-if(isset($_FILES)){
+if(isset($_FILES)||!isset($_SESSION[IMAGE])){
 
      $imageData = file_get_contents($_FILES['file']['tmp_name']);
      $imageDataForDb = mysqli_real_escape_string($db,$imageData);
 
      $email =  $_SESSION['EMAIL'];
-     $stmt = $db->prepare("update accounts set image = '$imageDataForDb' where email ='$email'");
+     $stmt = $db->prepare("UPDATE accounts SET image = '$imageDataForDb' where email ='$email'");
      if($stmt->execute())
      {
          echo '

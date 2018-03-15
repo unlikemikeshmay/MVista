@@ -102,7 +102,7 @@ else{
 }
  if($ok)
  {
-	include './DB/connect.php';
+	include './DB/hostedConnect.php';
 
 	/* if($db)
 	{
@@ -140,7 +140,7 @@ else{
 			}
 			else
 			{
-                
+                $datenow = date("Y-m-d");
                 date_default_timezone_set('Canada/Eastern');
 				$sql = sprintf("INSERT INTO `accounts` (first_name, last_name,email,hash,registerDate) VALUES (
 					'%s','%s','%s','%s','%s'
@@ -148,7 +148,7 @@ else{
 				mysqli_real_escape_string($db,$Lname),
 				mysqli_real_escape_string($db,$Email),
                 mysqli_real_escape_string($db,$Hsh),
-                mysqli_real_escape_string($db,'NOW()')
+                mysqli_real_escape_string($db,$datenow)
                
             );
 				$query = mysqli_query($db,$sql);
@@ -160,7 +160,8 @@ else{
 					/* echo 'insert statement successful: setting session variables'; */
 					if(!isset($_SESSION)){
 						session_start();
-					}
+                    }
+                    
 					/* $_SESSION['REGISTERDATE'] =  $RegDate; */
 					$_SESSION['EMAIL'] = $_POST['EMAIL'];
 					$_SESSION['FirstName'] = $_POST['FNAME'];
