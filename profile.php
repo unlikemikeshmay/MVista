@@ -1,5 +1,5 @@
 <?php
-include_once('./DB/connect.php');
+include_once('./DB/hostedConnect.php');
 if(!isset($_SESSION)){
     session_start();
 }
@@ -12,32 +12,27 @@ if(!isset($_SESSION)){
                         foreach($result as $row){
                             array_push($userArray,$row);
                   
+
                             
                             $regiDateSet = array_column($userArray,'registerDate');
                             $imageSet = array_column($userArray,'image');
                             $aboutSet = array_column($userArray,'about');
                             $infoSet = array_column($userArray,'info');
                             $todoSet = array_column($userArray,'todo');
-                           var_dump(array_column($userArray,'image'));
-                           if(!isset($imageSet)){
-                                 $_SESSION['IMAGE'] = '<img src="./public/linkd.jpg">';
-                                 echo 'default image';
-                           }
-                           else{
-                            $_SESSION['IMAGE'] = '<img src="data:image/jpeg;base64,'.base64_encode($imageSet[0] ).'"height:"100" width:"100" />';
-                            echo 'set image';
-                           }
+
+                        } 
                             $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
-                            
+                            $_SESSION['IMAGE'] = (isset($imageSet)?'<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />':'<img src="./public/linkd.jpg"/>');
                             $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
                             $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
                             $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
-                        /* var_dump( $_SESSION['IMAGE']); */
-                       echo  $imageSet[0];
-                           
-                        } 
+                           /*  echo($row['image']); */
+                            /* echo($_SESSION['IMAGE']);
+                            echo($_SESSION['ABOUT']);
+                            echo($_SESSION['INFO']);
+                            echo($_SESSION['TODO']); */
                     }
-                    $mysqli->close();
+                    
                 }
 ?>
 <DOCTYPE html>
@@ -119,7 +114,7 @@ if(!isset($_SESSION)){
                 <h3 >
                 
                 <?php 
-    echo 'fuck';
+
 if(isset($_POST['submit'])){
     echo '
     <div class="container">

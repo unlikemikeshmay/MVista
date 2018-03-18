@@ -2,8 +2,8 @@
 $Host = '107.180.54.174';
 $UserName = 'unlikemikejay';
 $Password = 'L@mbofsilence1';
-
-$db = mysqli_connect('127.0.0.1','root','root', 'mvista');
+$DataB ='mvista';
+$db = mysqli_connect($Host,$UserName,$Password,$DataB );
 
 /* uncomment for db testing
  if($db ===false){
