@@ -79,7 +79,7 @@ m = n.getMonth() + 1;
 d = n.getDate();
 $('#date').html(m + "/" + d + "/" + y)
 
-$('body').hover(function(){
+$('.containerz').hover(function(){
     $('.e').toggleClass('hidden',3000,'easeOutSine');
 })
 function reload(){

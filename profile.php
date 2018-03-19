@@ -115,28 +115,15 @@ if(!isset($_SESSION)){
 <div class="parallaxE"></div>
 <div class="container">
     <div class="row">
-      
+    <div class="containerz">
         <div class="col-lg-4 order-lg-1">
              <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
-                <div class="containerz">
+                
                   <div id="changeimage" >  <?php echo($_SESSION['IMAGE']); ?>                                       
                   
                   
-                  <div class="col-lg-6 order-lg-1 e hidden z">
-    
-                    <div class="form-group z">
-                         <h6>Change profile picture.</h6>
-                        <label class="control-label btn btn-sm btn-outline-dark z"style="display:block;" for="file">Image</label>
-                     <div class="input-group z">
-            
-                          <input type="submit" name="submit" class="btn btn-sm btn-outline-dark z"value="update"style="display:block;"onclick="reload()"/>
-                           <input  type="file" name="file" id="file" class="hide z" />
-                     </div>
                  </div>
-
-</div>
-</div>
-                </div>
+                
 
                 
                 </form>
