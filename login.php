@@ -95,8 +95,11 @@
 		/* echo '<p>post not set</p>'; */
 	}
 	if($ok)
-	{
-		$con = mysqli_connect('127.0.0.1','root','root', 'mvista');
+	{$H = '107.180.54.174';
+        $U= 'unlikemikejay';
+        $P = 'L@mbofsilence1';
+        $DB ='mvista';
+		$con = mysqli_connect($H,$U,$P, $DB );
 	/* 	if($con)
 		{
 			echo '<p>database connection for login complete</p>';
