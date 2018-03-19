@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
     session_start();
 }
                 if($db){
-                    echo 'db';
+                    /* echo 'db'; */
                     $email =  $_SESSION['EMAIL'];
                     $UserSession = "SELECT * FROM accounts WHERE email ='$email'"; 
                     if($result = mysqli_query($db, $UserSession)){
@@ -13,16 +13,40 @@ if(!isset($_SESSION)){
                             array_push($userArray,$row);
                   
 
-                            
-                            $regiDateSet = array_column($userArray,'registerDate');
+                            /* var_dump(array_column($userArray,'image')); */
+                           
+                            /* $regiDateSet = array_column($userArray,'registerDate'); */
                             $imageSet = array_column($userArray,'image');
                             $aboutSet = array_column($userArray,'about');
                             $infoSet = array_column($userArray,'info');
                             $todoSet = array_column($userArray,'todo');
+                            if(array_key_exists('image', $row)){
+                               
+                                if($row['image']===NULL){
+                                    echo 'row => image exists but is null ';
+                                    $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
+                                echo 'setting session image variable to default profile image ';                                }
+                                else{
+                                    echo 'row => image exists and is not null ';
+                                    $_SESSION['IMAGE']= '<img class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
+                                }
+                               /*  var_dump($row['image']);
+                                $_SESSION['IMAGE']= '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
+                                echo 'image set with blob data'; */
+                                /* var_dump($_SESSION['IMAGE']); */
+                            }
+                            else{
+                                
+                               
+                                var_dump($row['image']);
+                                $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
+                                echo ' image set with default data ';
+                                
+                            }
 
                         } 
                             $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
-                            $_SESSION['IMAGE'] = (isset($imageSet)?'<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />':'<img src="./public/linkd.jpg"/>');
+                            /* $_SESSION['IMAGE'] = (isset($imageSet)?'<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />':'<img src="./public/linkd.jpg"/>'); */
                             $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
                             $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
                             $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
@@ -95,7 +119,8 @@ if(!isset($_SESSION)){
         <div class="col-lg-4 order-lg-1">
              <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
                 <div class="containerz">
-                    <?php echo($_SESSION['IMAGE']); ?>
+                  <div id="changeimage" >  <?php echo($_SESSION['IMAGE']); ?>
+                  </div>
              
                 </div>
 

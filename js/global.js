@@ -79,7 +79,7 @@ m = n.getMonth() + 1;
 d = n.getDate();
 $('#date').html(m + "/" + d + "/" + y)
 
-$('#changeimage').click(function(){
+$('#changeimage').hover(function(){
     $('.e').toggleClass('hidden',3000,'easeOutSine');
 })
 
