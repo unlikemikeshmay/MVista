@@ -56,7 +56,14 @@
         <div class="row justify-content-center">
         <form id="contactForm" method="post" action="contact.php"class="col-sm-6 col-md-6 col-lg-4">
                     <div class="col-sm-6 col-md-12 col-lg-12">    
-                         <h5 >Reach out! Send me an email!</h5>
+                         <h5><?php if(isset($_POST['Submit']))
+                         {
+                            echo 'Mail Sent! I will get back to you as soon as possible.';
+                         }
+                         else{
+                             echo 'Reach out! Send me an email!';
+                         }
+                         ?></h5>
                     </div>    
 
                     <div class="form-group">
@@ -76,7 +83,7 @@
                         <textarea rows="10" cols="30"class="form-control col-xs-4"id="message"placeholder="Message:"name="MESSAGE"></textarea>
                     </div>
                     <div class="form-group">
-                    <input type="submit" class="btn btn-outline-dark my-2 my-sm-0"value="Send"></input>
+                    <input name="Submit" type="submit" class="btn btn-outline-dark my-2 my-sm-0"value="Send"></input>
                     </div>
         <div class="container-fluid"align="center">
             <div class="row">
@@ -122,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('location:contact.php');
             }
             else{$flag = false;}
-        
+            echo 'mail didnt sent';
             
         }
     catch(exception $e)

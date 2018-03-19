@@ -14,13 +14,13 @@
    
     display: none;
 }
-.in{
-/*     width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1; */
+.hide{
+    display: none;
+}
+.z{
+background-color: lightgray;
+border-radius: 2em;
+padding:.4em;
 }
 .right{
     margin-right:1em;
@@ -40,6 +40,7 @@ ul li{
     color:white;
     display: inline;
 }
+
 .profile-pic {
     border-radius: 50%;
     height: 250px;

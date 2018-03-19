@@ -119,21 +119,25 @@ if(!isset($_SESSION)){
         <div class="col-lg-4 order-lg-1">
              <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
                 <div class="containerz">
-                  <div id="changeimage" >  <?php echo($_SESSION['IMAGE']); ?>
+                  <div id="changeimage" >  <?php echo($_SESSION['IMAGE']); ?>                                       
                   </div>
-             
+                  
+                  <div class="col-lg-4 order-lg-1 e hidden z">
+    
+                    <div class="form-group z">
+                         <h6>Change profile picture.</h6>
+                        <label class="control-label btn btn-sm btn-outline-dark z"style="display:block;" for="file">Image</label>
+                     <div class="input-group z">
+            
+                          <input type="submit" name="submit" class="btn btn-sm btn-outline-dark z"value="update"style="display:block;"onclick="reload()"/>
+                           <input  type="file" name="file" id="file" class="hide z" />
+                     </div>
+                 </div>
+
+</div>
                 </div>
 
-                <div class="col-lg-4 order-lg-1 e hidden">
-    
-        <div class="form-group">
-        <label class="control-label btn btn-sm btn-outline-dark" for="file">Image</label>
-        <div class="input-group in ">
-            <input  type="file" name="file" id="file"  />
-        </div>
-      </div>
-        <input type="submit" name="submit" class="btn btn-sm btn-outline-dark"value="update">
-                </div>
+                
                 </form>
 
                 <h3 >
@@ -141,14 +145,8 @@ if(!isset($_SESSION)){
                 <?php 
 
 if(isset($_POST['submit'])){
-    echo '
-    <div class="container">
-    <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <h4> post is set</h4>
-    </div>    
-    </div>
-    </div>';
+    echo "<meta http-equiv='refresh'content='0;url='profile.php'>";
+   
 if(isset($_FILES)||!isset($_SESSION[IMAGE])){
 
      $imageData = file_get_contents($_FILES['file']['tmp_name']);
