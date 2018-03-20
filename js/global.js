@@ -83,7 +83,24 @@ $('.containerz').hover(function(){
     $('.e').toggleClass('hidden',3000,'easeOutSine');
 })
 function reload(){
-    setTimeout(function(){ location.reload(); }, 3000);
+    setTimeout(function(){ 
+        alert('about to reload');
+        location.reload(); }, 3000);
+};
+document.getElementById("changeImageSpan").addEventListener("click",hideandshow);
+
+function hideandshow(){
+   var x = document.getElementById("hiddenDiv");
+   if(x.style.display==="none"){
+       x.style.display = "block";
+   }else{
+       x.style.display = "none";
+   }
 }
+$('#file').change(function(){
+    $('#submit').removeAttr('disabled');
+    
+    reload();
+})
 
 })

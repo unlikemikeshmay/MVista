@@ -59,19 +59,7 @@ ul li{
   
 }
 
-.profile-pic:hover {
-    background-color: rgba(0,0,0,.8);
-    z-index: 10000;
-    color: #fff;
-    transition: all .3s ease;
-    text-decoration: none;
-}
 
-.profile-pic span {
-    display: inline-block;
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-}
 .loginContainer{
     margin-top: 10em;
     margin-bottom:10em;
@@ -484,4 +472,11 @@ margin-top:22em;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+  }
+  #hiddenDiv{
+      display: none;
+  }
+  #changeImageSpan:hover{
+    color:green;
+    cursor: pointer;
   }

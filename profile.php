@@ -25,19 +25,20 @@ if(!isset($_SESSION)){
                                 if($row['image']===NULL){
                                     echo 'row => image exists but is null ';
                                     $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                                echo 'setting session image variable to default profile image ';                                }
-                                else{
+                                echo 'setting session image variable to default profile image ';                                
+                            }elseif($row['image']!==NULL&&$row['image']==''){
+                                $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
+                                    echo 'row => image is not null but is an empty string: converting to default ';
+                            }else{
                                     echo 'row => image exists and is not null ';
                                     $_SESSION['IMAGE']= '<img class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
                                 }
-                               /*  var_dump($row['image']);
-                                $_SESSION['IMAGE']= '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
-                                echo 'image set with blob data'; */
+                        
+                               /*  $_SESSION['IMAGE']= '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
+                                echo 'image set with blob data';  */
                                 /* var_dump($_SESSION['IMAGE']); */
                             }
                             else{
-                                
-                               
                                 var_dump($row['image']);
                                 $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
                                 echo ' image set with default data ';
@@ -45,8 +46,9 @@ if(!isset($_SESSION)){
                             }
 
                         } 
-                            $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:'');
-                            /* $_SESSION['IMAGE'] = (isset($imageSet)?'<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />':'<img src="./public/linkd.jpg"/>'); */
+                        $TorontoDate = date_default_timezone_set('Canada/Eastern');
+                            $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:date("d/m/Y"));
+                           
                             $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
                             $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
                             $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
@@ -113,51 +115,87 @@ if(!isset($_SESSION)){
 
 
 <div class="parallaxE"></div>
+<div class="containerz">
 <div class="container">
     <div class="row">
-    <div class="containerz">
-        <div class="col-lg-4 order-lg-1">
-             <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm">
+    
+        <div class="col-lg-12 order-lg-1"align="center">
+             <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm"onsubmit="reload()">
                 
-                  <div id="changeimage" >  <?php echo($_SESSION['IMAGE']); ?>                                       
-                  
-                  
-                 </div>
-                
+                  <div id="changeimage" >  <?php  echo($_SESSION['IMAGE']); ?></div>
+                 <span id="changeImageSpan"><p>Change image</p></span>
+                <div id="hiddenDiv"style="display: none;">
+                    <div class="form-group col-lg-1">
+                        <label for="file" class="btn btn-sm btn-outline-dark">Choose image</label>
+                        <input type="file" class="form-control hidden" id="file" aria-describedby="inputImage" placeholder="Enter an image">
+                        
+                    
+
+                        <input type="submit" class="form-control btn btn-sm btn-outline-dark" id="submit" value="submit"disabled="disabled">
+                    </div>
+                    
+                </div>
+                </form>
+                <div class="col-lg-12">
+               
+                <?php 
+if(isset($_SESSION['EMAIL']))
+{
+    
+    $TorontoDate = date_default_timezone_set('Canada/Eastern');
+    function greeting(){
+        $hour = date('H');
+        if($hour < 12){
+            $greeting = '<h4> Good morning <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>';
+           
+        }
+        if($hour>=12 && $hour<18){
+            $greeting =  '<h4> Good afternoon <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>';
+        }
+        else{
+            $greeting = '<h4> Good evening <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>';
+        }
+        return $greeting;
+    }
+  echo greeting();
+}
+
+
+?>
+                </div>
 
                 
-                </form>
+               
 
                 <h3 >
                 
                 <?php 
-
 if(isset($_POST['submit'])){
-    echo "<meta http-equiv='refresh'content='0;url='profile.php'>";
-   
-if(isset($_FILES)||!isset($_SESSION[IMAGE])){
+   /*  echo "<meta http-equiv='refresh'content='0;url='profile.php'>"; */
+   var_dump($_POST['submit']);
+    if($_FILES!=null){
+        echo 'dicks';
+        $imageData = file_get_contents($_FILES['file']['tmp_name']);
+        $imageDataForDb = mysqli_real_escape_string($db,$imageData);
 
-     $imageData = file_get_contents($_FILES['file']['tmp_name']);
-     $imageDataForDb = mysqli_real_escape_string($db,$imageData);
+        $email =  $_SESSION['EMAIL'];
+        $stmt = $db->prepare("UPDATE accounts SET image = '$imageDataForDb' where email ='$email'");
+        if($stmt->execute())
+        {
+            echo '
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h4> great success</h4>' . $_SESSION['EMAIL'] . ' 
+            </div>    
+            </div>
+            </div>';
 
-     $email =  $_SESSION['EMAIL'];
-     $stmt = $db->prepare("UPDATE accounts SET image = '$imageDataForDb' where email ='$email'");
-     if($stmt->execute())
-     {
-         echo '
-         <div class="container">
-         <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-             <h4> great success</h4>' . $_SESSION['EMAIL'] . ' 
-         </div>    
-         </div>
-         </div>';
+        }
 
-     }
-
+        
     
-   
-    }
+        }
     else {
         echo '
         <div class="container">
@@ -168,58 +206,14 @@ if(isset($_FILES)||!isset($_SESSION[IMAGE])){
         </div>
         </div>';
 
-    }
+       }
 
 
 }
 
 ?>
                 
-                 <?php 
-if(isset($_SESSION['EMAIL']))
-{
-    
-    $TorontoDate = date_default_timezone_set('Canada/Eastern');
-    function greeting(){
-        $hour = date('H');
-        if($hour < 12){
-            $greeting = '
-            <div class="container">
-            <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <h4> Good morning <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>
-            </div>    
-            </div>
-            </div>';
-           
-        }
-        if($hour>=12 && $hour<18){
-            $greeting =  '
-            <div class="container">
-            <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <h4> Good afternoon <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>
-            </div>    
-            </div>
-            </div>';
-        }
-        else{
-            $greeting = '
-            <div class="container">
-            <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <h4> Good evening <br>'.$_SESSION['FirstName'] . ' ' . $_SESSION['LastName'].'</h4>
-                </div>    
-            </div>
-            </div>';
-        }
-        return $greeting;
-    }
-  echo greeting();
-}
-
-
-?></h3>
+                 </h3>
             </div>
            
         </div>
@@ -295,7 +289,7 @@ if(isset($_SESSION['EMAIL']))
                                 <tbody>                                    
                                     <tr>
                                         <td>
-                                            <strong><?php echo($_SESSION['FirstName'])?></strong> joined Mvista</strong>
+                                            <strong><?php echo($_SESSION['FirstName'])?></strong> joined Mvista: <?php echo( $_SESSION['REGIDATE']) ?></strong>
                                         </td>
                                   
                                 </tbody>
@@ -305,7 +299,7 @@ if(isset($_SESSION['EMAIL']))
                     <!--/row-->
                 </div>
                
-                <div class="tab-pane" id="edit">
+               <!--  <div class="tab-pane" id="edit">
                     <form role="form">
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">First name</label>
@@ -398,7 +392,7 @@ if(isset($_SESSION['EMAIL']))
         </div>
        
     </div>
-</div>
+</div> -->
     <script src="js/jquery-3.1.1.min.js"type="text/javascript"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
