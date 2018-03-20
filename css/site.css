@@ -1,5 +1,6 @@
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+@media screen and (min-device-width : 520px) and (max-device-width : 700px)
+{
     .parallax2{
         margin-top: 23em;
         background:url('../public/planning12x80.jpeg') no-repeat center;
@@ -8,7 +9,54 @@
         height:500px;
         width: 100%;
     }
-    }   
+    .Arrow{
+        display: none;
+    }
+    #downArrow2{
+        display: none;
+    }
+    #downArrow3{
+        display: none;
+    }
+    #upArrow{
+        display: none;
+    }
+    #upArrow2{
+        display: none;
+    }
+    #upArrow3{
+        display: none;
+    }
+}   
+@media screen and (min-width : 520px) and (max-width : 700px)
+{
+    .parallax2{
+        margin-top: 23em;
+        background:url('../public/planning12x80.jpeg') no-repeat center;
+        background-size: cover;
+        background-attachment: fixed;
+        height:500px;
+        width: 100%;
+    }
+    .Arrow{
+        display: none;
+    }
+    #downArrow2{
+        display: none;
+    }
+    #downArrow3{
+        display: none;
+    }
+    #upArrow{
+        display: none;
+    }
+    #upArrow2{
+        display: none;
+    }
+    #upArrow3{
+        display: none;
+    }
+}   
   
 
 
@@ -270,6 +318,7 @@ margin-top:22em;
   animation-iteration-count: infinite; 
   cursor: pointer; 
 }
+
 #upArrow2{
     /*  margin-top:1em; */
      cursor: pointer;

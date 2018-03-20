@@ -4,6 +4,7 @@
 <title>MVista - Home</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width" />
 <link href="css/bootstrap.min.css"rel="stylesheet">
 <script src="js/bootstrap.min.js"type="text/javascript"></script>
 <link href="css/site.css"rel="stylesheet">
