@@ -479,4 +479,5 @@ margin-top:22em;
   #changeImageSpan:hover{
     color:green;
     cursor: pointer;
+    font-size:1.1em;
   }

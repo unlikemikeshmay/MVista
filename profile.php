@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
     session_start();
 }
                 if($db){
-
+                    
                     $email =  $_SESSION['EMAIL'];
                     $UserSession = "SELECT * FROM accounts WHERE email ='$email'"; 
                     if($result = mysqli_query($db, $UserSession)){
@@ -19,34 +19,53 @@ if(!isset($_SESSION)){
                             $todoSet = array_column($userArray,'todo');
                             if(array_key_exists('image', $row)){
                                
-                                if($row['image']===NULL){
-                      /*               echo 'row => image exists but is null '; */
-                                    $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                              /*   echo 'setting session image variable to default profile image ';       */                          
-                            }elseif($row['image']!==NULL&&$row['image']==''){
-                                $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                             /*        echo 'row => image is not null but is an empty string: converting to default '; */
-                            }else{
-                                /*     echo 'row => image exists and is not null '; */
-                                    $_SESSION['IMAGE']= '<img class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
+                                if($row['image']===NULL)
+                                {
+                        /*               echo 'row => image exists but is null '; */
+                                        $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
+                                /*   echo 'setting session image variable to default profile image ';       */                          
                                 }
-
-                            }
-                            else{
-                               /*  var_dump($row['image']); */
-                                $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                              /*   echo ' image set with default data '; */
+                                elseif($row['image']!==NULL&&$row['image']=='')
+                                {
+                                    $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
+                                /*        echo 'row => image is not null but is an empty string: converting to default '; */
+                                }
+                                else
+                                {
+                                    /*     echo 'row => image exists and is not null '; */
+                                        $_SESSION['IMAGE']= '<img class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
+                                }
+                                if($row['registerDate']!==NULL){
+                                    $_SESSION['REGIDATE'] = $row['registerDate'];
+                                }
+                                else{
+                                    $TorontoDate = date_default_timezone_set('Canada/Eastern');
+                                    $_SESSION['REGIDATE'] = date("d/m/Y");
+                                }
+                                if($row['info']!==NULL){
+                                    $_SESSION['INFO'] = $row['info'];
+                                }
+                                else{
+                                    $_SESSION['INFO'] = '';
+                                }
+                                if($row['about']!==NULL){
+                                    $_SESSION['ABOUT'] = $row['about'];
+                                }
+                                else{
+                                    $_SESSION['ABOUT'] = '';
+                                }
                                 
                             }
 
+
                         } 
 
-                        $TorontoDate = date_default_timezone_set('Canada/Eastern');
+                     /*    $TorontoDate = date_default_timezone_set('Canada/Eastern');
                             $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:date("d/m/Y"));
                            
                             $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
                             $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
-                            $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
+                            $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:''); */
 
                     }
                     
@@ -242,26 +261,52 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <div class="tab-pane active" id="profile">
                     <h5 class="mb-3">Welcome to your profile <?php echo($_SESSION['FirstName'] . ' ' . $_SESSION['LastName'])?></h5>
                     <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-inline">
-                                <li list-inline-item> <a class="btn btn-lg btn-outline-dark my-2 my-lg-6" href="#collapseAbout1"data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">About </a>
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                           <div>
+                                 <a class="btn btn-lg btn-outline-dark my-2 my-lg-6" href="#collapseAbout1"data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">About </a>
+                            </div>
                                <div class="collapse" id="collapseAbout1">
                                     <div class="card card-body">
-                                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                    <?php   if (!empty($_SESSION['ABOUT'])){
+                                        
+                                        echo('
+                                        <form action="profile.php"method="POST" enctype="multipart/form-data" id="AboutChangeForm" onsubmit="reload()">
+                                        <div class="form-group"> 
+                                        <label class="col-lg-4 ">'.$_SESSION['ABOUT'].'</label>                                      
+                                        <input type="text" class="form-control" name="about" id="about" placeholder="Write a little about you.">
+                                        <div>
+                                        <input type="submit" name="submitAbout" class="form-control btn btn-sm btn-outline-dark" id="submitAbout" value="submit">
+                                        </div>
+                                        </div></form>');
+                                        }
+                                        else
+                                        {echo('
+                                            <form action="profile.php"method="POST" enctype="multipart/form-data" id="AboutChangeForm" onsubmit="reload()">
+                                            <div class="form-group">
+                                            <label class="col-sm-2 col-form-label">Information about you will go here!</label>    
+                                            <input type="text" class="form-control" name="about" id="about" placeholder="Write a little about you.">
+                                            <div>
+                                            <input type="submit" name="submitAbout" class="form-control btn btn-sm btn-outline-dark" id="submitAbout" value="submit">
+                                            </div>
+                                            </div></form>');
+                                        } 
+                                        ?>
+                                        <!--   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. -->
                                     </div>
                                 </div>
-                            </div></li>
-                                <li list-inline-item> <a class="btn btn-lg btn-outline-dark my-2 my-lg-6" href="#collapseAbout2"data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">Info</a>
+                            </div>
+                            <div>
+                                <a class="btn btn-lg btn-outline-dark my-2 my-lg-6" href="#collapseAbout2"data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">Info</a>
+                            </div>  
                                <div class="collapse" id="collapseAbout2">
                                     <div class="card card-body">
                                           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
                                     </div>
                                 </div>
                             </div>
-                                <li></li>
-                            </ul>
+                               
                         
-                       <!--  <div class="col-md-6">
+                        <div class="col-md-6">
                             <h6>Recent badges</h6>
                             <a href="#" class="badge badge-dark badge-pill">html5</a>
                   
@@ -274,7 +319,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                             <span class="badge badge-primary"><i class="fa fa-user"></i> 0 Followers</span>
                             <span class="badge badge-success"><i class="fa fa-cog"></i> 0 Forks</span>
                             <span class="badge badge-danger"><i class="fa fa-eye"></i>0 Views</span>
-                        </div> -->
+                        </div>
                         <div class="col-md-12">
                             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
                             <table class="table table-sm table-hover table-striped">
