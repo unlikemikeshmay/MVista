@@ -4,17 +4,14 @@ if(!isset($_SESSION)){
     session_start();
 }
                 if($db){
-                    /* echo 'db'; */
+
                     $email =  $_SESSION['EMAIL'];
                     $UserSession = "SELECT * FROM accounts WHERE email ='$email'"; 
                     if($result = mysqli_query($db, $UserSession)){
                         $userArray = array();
                         foreach($result as $row){
                             array_push($userArray,$row);
-                  
 
-                            /* var_dump(array_column($userArray,'image')); */
-                           
                             $regiDateSet = array_column($userArray,'registerDate');
                             $imageSet = array_column($userArray,'image');
                             $aboutSet = array_column($userArray,'about');
@@ -23,41 +20,34 @@ if(!isset($_SESSION)){
                             if(array_key_exists('image', $row)){
                                
                                 if($row['image']===NULL){
-                                    echo 'row => image exists but is null ';
+                      /*               echo 'row => image exists but is null '; */
                                     $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                                echo 'setting session image variable to default profile image ';                                
+                              /*   echo 'setting session image variable to default profile image ';       */                          
                             }elseif($row['image']!==NULL&&$row['image']==''){
                                 $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                                    echo 'row => image is not null but is an empty string: converting to default ';
+                             /*        echo 'row => image is not null but is an empty string: converting to default '; */
                             }else{
-                                    echo 'row => image exists and is not null ';
+                                /*     echo 'row => image exists and is not null '; */
                                     $_SESSION['IMAGE']= '<img class="profile-pic" src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
                                 }
-                        
-                               /*  $_SESSION['IMAGE']= '<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'"height:"100" width:"100" />';
-                                echo 'image set with blob data';  */
-                                /* var_dump($_SESSION['IMAGE']); */
+
                             }
                             else{
-                                var_dump($row['image']);
+                               /*  var_dump($row['image']); */
                                 $_SESSION['IMAGE'] = '<img class="profile-pic" src="./public/empty.jpg"/>';
-                                echo ' image set with default data ';
+                              /*   echo ' image set with default data '; */
                                 
                             }
 
                         } 
-                        var_dump($userArray);
+
                         $TorontoDate = date_default_timezone_set('Canada/Eastern');
                             $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:date("d/m/Y"));
                            
                             $_SESSION['ABOUT'] = (isset($aboutSet)?$aboutSet[0]:'');
                             $_SESSION['INFO'] = (isset($infoSet)?$infoSet[0]:'');
                             $_SESSION['TODO'] = (isset($todoSet)?$todoSet[0]:'');
-                           /*  echo($row['image']); */
-                            /* echo($_SESSION['IMAGE']);
-                            echo($_SESSION['ABOUT']);
-                            echo($_SESSION['INFO']);
-                            echo($_SESSION['TODO']); */
+
                     }
                     
                 }
@@ -121,14 +111,14 @@ if(!isset($_SESSION)){
     <div class="row">
     
         <div class="col-lg-12 order-lg-1"align="center">
-             <form action="profile.php"method="POST" enctype="multipart/form-data" id="ImageChangeForm"onsubmit="reload()">
+             <form action="profile.php"method="POST" enctype="multipart/form-data" id="ImageChangeForm" onsubmit="reload()">
                 
                   <div id="changeimage" >  <?php  echo($_SESSION['IMAGE']); ?></div>
                  <span id="changeImageSpan"><p>Change image</p></span>
                 <div id="hiddenDiv"style="display: none;">
                     <div class="form-group col-lg-1">
                         <label for="file" class="btn btn-sm btn-outline-dark">Choose image</label>
-                        <input type="file" name="file" class="form-control " id="file" aria-describedby="inputImage" placeholder="Enter an image">
+                        <input type="file" name="file" class="form-control hidden" id="file" aria-describedby="inputImage" placeholder="Enter an image">
                         
                     
 
@@ -172,7 +162,7 @@ if(isset($_SESSION['EMAIL']))
                
                 <?php 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-   /*  echo "<meta http-equiv='refresh'content='0;url='profile.php'>"; */
+    echo "<meta http-equiv='refresh'content='0;url='profile.php'>";
   
    var_dump($_FILES['file']['tmp_name']);
     if($_FILES!=null){

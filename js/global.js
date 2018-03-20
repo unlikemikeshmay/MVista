@@ -84,8 +84,8 @@ $('.containerz').hover(function(){
 })
 function reload(){
     setTimeout(function(){ 
-        alert('about to reload');
-        location.reload(); }, 3000);
+      
+        location.reload(); }, 2500);
 };
 document.getElementById("changeImageSpan").addEventListener("click",hideandshow);
 
