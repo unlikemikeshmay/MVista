@@ -1,7 +1,16 @@
-@media (max-width: 1350px) {}
-@media (max-width: 1200px) {}
-@media (max-width: 1024px) {}
-@media (max-width: 860px) {}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+    .parallax2{
+        margin-top: 23em;
+        background:url('../public/planning12x80.jpeg') no-repeat center;
+        background-size: cover;
+        background-attachment: fixed;
+        height:500px;
+        width: 100%;
+    }
+    }   
+  
+
 
 .margin{
     margin-left: 2.5em;

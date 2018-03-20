@@ -168,12 +168,12 @@
             </div>
         </div>
     </div>
-    <!-- <div class="container carText"></div> -->
+</div>
    
-    
+<div class-"page"> <div class="parallax2"></div></div>
   
     
-    <div class="parallax2"></div>
+   
     <div class="container-fluid"align="center"id="page3Target">
                 <div class="row" id="page2Target">
                     <div  class="col-lg-12 col-md-6 col-sm-4 col-xs-12 margintop"><i class="arrow up"id="upArrow2"></i></div>
