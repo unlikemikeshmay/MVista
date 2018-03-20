@@ -54,7 +54,7 @@
 
     <div class="container"align="center">
         <div class="row justify-content-center">
-        <form id="contactForm" method="post" action="contact.php"class="col-sm-6 col-md-6 col-lg-4">
+        <form id="contactForm" method="post" action="Contact.php"class="col-sm-6 col-md-6 col-lg-4">
                     <div class="col-sm-6 col-md-12 col-lg-12">    
                          <h5><?php if(isset($_POST['Submit']))
                          {
@@ -83,8 +83,9 @@
                         <textarea rows="10" cols="30"class="form-control col-xs-4"id="message"placeholder="Message:"name="MESSAGE"></textarea>
                     </div>
                     <div class="form-group">
-                    <input name="Submit" type="submit" class="btn btn-outline-dark my-2 my-sm-0"value="Send"></input>
+                    <input name="Submit" type="submit" class="btn btn-outline-dark my-2 my-sm-0"value="Send"onsubmit="reload()"></input>
                     </div>
+                    <?php if(!empty($_SESSION['mail'])){echo($_SESSION['mail']);} ?>
         <div class="container-fluid"align="center">
             <div class="row">
                 <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12 " ><i class="arrow down"id="ContactdownArrow"></i>
@@ -97,54 +98,48 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require_once './vendor/autoload.php';
+require './vendor/autoload.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['FROM'])&& $_POST['FROM']!=''&&isset($_POST['MESSAGE'])&& $_POST['MESSAGE']!='')
     {
         try{
             $recipEm = 'admin@mvista.ca';
-            $recipNa = 'Mike Jay';
+            $recipNa = 'michael jay';
         /*  echo "<p>email form details correctly filled out</p>"; */
             $mail = new PHPMailer();
-        /*  $mail->SMTPDebug = 2; */            // Enable verbose debug output
+          $mail->SMTPDebug = 2;            // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Host = "localhost";  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = false;                               // Enable SMTP authentication
             $mail->Username = 'admin@mvista.ca';                 // SMTP username
-            $mail->Password = 'L@mbofsilence1';                           // SMTP password
+            $mail->Password = 'L@mbofsilence1';  
+                                    // SMTP password
             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 587;                                    // TCP port to connect to
             /////////////////////////////////////////////
-            
-            $mail->setFrom($recipEm,$recipNa);
-            $mail->addAddress($recipEm,$recipNa);
+           
+            $mail->SetFrom('admin@mvista.ca','michael jay');
+           /*  $mail->addAddress($recipEm,$recipNa); */
             $mail->isHTML(TRUE);
             $mail->Subject = $_POST['SUBJECT'];
             $mail->addCC(isset($_POST['SENDEREMAIL'])?$_POST['SENDEREMAIL']:'');
             $mail->Body = 'You have been contacted by '. $_POST['FROM'] . (isset($_POST['SENDEREMAIL'])?( ' with return email: '.$_POST['SENDEREMAIL']): ' with no return email')  . '<br><br> '. $_POST['MESSAGE'] . ' ' ;
             if($mail->send()){
                 $flag=true;
-                echo '<p>Message has been sent. </p>';
+               $_SESSION['mail'] = '<span style="color:green">Message sent!</span>';
                 $_POST = array();
-                header('location:contact.php');
+              /*   header('location:Contact.php'); */
             }
             else{$flag = false;}
-            echo 'mail didnt sent';
-            
+            $_SESSION['mail'] = '';
+            $_POST = array();
         }
     catch(exception $e)
     {
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     }
-        if($flag){
-            
-        echo '<p>Message sent!</p>';
 
-        /*  header('Location: contact.php'); */
-        }
-        else{
-            echo 'Guess it didnt send';
-        }
+
 
     }
 }

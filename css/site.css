@@ -1,5 +1,5 @@
 /* Smartphones (portrait and landscape) ----------- */
-@media screen and (min-device-width : 520px) and (max-device-width : 700px)
+@media screen and (min-device-width : 300px) and (max-device-width : 700px)
 {
     .parallax2{
         margin-top: 23em;
@@ -8,6 +8,9 @@
         background-attachment: fixed;
         height:500px;
         width: 100%;
+    }
+    .parallax3{
+        margin-top: 20%;
     }
     .Arrow{
         display: none;
@@ -37,6 +40,9 @@
         background-attachment: fixed;
         height:500px;
         width: 100%;
+    }
+    .parallax3{
+        margin-top: 20%;
     }
     .Arrow{
         display: none;
