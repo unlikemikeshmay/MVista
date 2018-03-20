@@ -15,7 +15,7 @@ if(!isset($_SESSION)){
 
                             /* var_dump(array_column($userArray,'image')); */
                            
-                            /* $regiDateSet = array_column($userArray,'registerDate'); */
+                            $regiDateSet = array_column($userArray,'registerDate');
                             $imageSet = array_column($userArray,'image');
                             $aboutSet = array_column($userArray,'about');
                             $infoSet = array_column($userArray,'info');
@@ -46,6 +46,7 @@ if(!isset($_SESSION)){
                             }
 
                         } 
+                        var_dump($userArray);
                         $TorontoDate = date_default_timezone_set('Canada/Eastern');
                             $_SESSION['REGIDATE'] = (isset($regiDateSet)?$regiDateSet[0]:date("d/m/Y"));
                            
@@ -120,14 +121,14 @@ if(!isset($_SESSION)){
     <div class="row">
     
         <div class="col-lg-12 order-lg-1"align="center">
-             <form action="profile.php"method="POST" enctype="multipart/form-data"id="ImageChangeForm"onsubmit="reload()">
+             <form action="profile.php"method="POST" enctype="multipart/form-data" id="ImageChangeForm"onsubmit="reload()">
                 
                   <div id="changeimage" >  <?php  echo($_SESSION['IMAGE']); ?></div>
                  <span id="changeImageSpan"><p>Change image</p></span>
                 <div id="hiddenDiv"style="display: none;">
                     <div class="form-group col-lg-1">
                         <label for="file" class="btn btn-sm btn-outline-dark">Choose image</label>
-                        <input type="file" class="form-control hidden" id="file" aria-describedby="inputImage" placeholder="Enter an image">
+                        <input type="file" name="file" class="form-control " id="file" aria-describedby="inputImage" placeholder="Enter an image">
                         
                     
 
@@ -168,11 +169,12 @@ if(isset($_SESSION['EMAIL']))
                
 
                 <h3 >
-                
+               
                 <?php 
-if(isset($_POST['submit'])){
+if($_SERVER['REQUEST_METHOD'] == "POST"){
    /*  echo "<meta http-equiv='refresh'content='0;url='profile.php'>"; */
-   var_dump($_POST['submit']);
+  
+   var_dump($_FILES['file']['tmp_name']);
     if($_FILES!=null){
         echo 'dicks';
         $imageData = file_get_contents($_FILES['file']['tmp_name']);
@@ -198,13 +200,13 @@ if(isset($_POST['submit'])){
         }
     else {
         echo '
-        <div class="container">
-        <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h4> great failure</h4>
-        </div>    
-        </div>
-        </div>';
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h4> great failure</h4>' . $_SESSION['EMAIL'] . ' 
+            </div>    
+            </div>
+            </div>';
 
        }
 
